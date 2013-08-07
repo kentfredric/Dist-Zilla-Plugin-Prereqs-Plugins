@@ -311,7 +311,7 @@ x_Dist_Zilla:
     -
       class: Dist::Zilla::Plugin::Prereqs::Plugins
       name: Prereqs::Plugins
-      version: ~
+      version: 0.1.0
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:

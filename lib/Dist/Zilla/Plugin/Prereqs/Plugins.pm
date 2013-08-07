@@ -29,6 +29,17 @@ sub get_prereq_for {
     return ( Scalar::Util::blessed($plugin) , 0 );
 }
 
+around 'dump_config' => sub {
+    my ( $orig, $self, @args ) = @_;
+    my $config = $self->$orig(@args);
+    my $this_config = {
+        phase => $self->phase,
+        relation => $self->relation,
+    };
+    $config->{ q{} . __PACKAGE__ } = $this_config;
+    return $config;
+};
+
 sub register_prereqs {
     my ( $self ) = @_; 
     my $zilla = $self->zilla;
