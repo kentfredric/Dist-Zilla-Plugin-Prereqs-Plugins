@@ -25,6 +25,7 @@ my %module_build_args = (
   "requires" => {
     "Dist::Zilla::Role::PrereqSource" => 0,
     "Moose" => 0,
+    "MooseX::Types::Moose" => 0,
     "Scalar::Util" => 0,
     "perl" => "v5.10.0",
     "strict" => 0,
