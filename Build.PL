@@ -23,17 +23,17 @@ my %module_build_args = (
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Dist::Zilla::Role::PrereqSource" => 0,
-    "Moose" => 0,
-    "MooseX::Types::Moose" => 0,
-    "Scalar::Util" => 0,
+    "Dist::Zilla::Role::PrereqSource" => "4.300035",
+    "Moose" => "2.1005",
+    "MooseX::Types::Moose" => "0.36",
+    "Scalar::Util" => "1.3",
     "perl" => "v5.10.0",
     "strict" => 0,
     "warnings" => 0
   },
   "script_files" => [],
   "test_requires" => {
-    "Capture::Tiny" => 0,
+    "Capture::Tiny" => "0.22",
     "Test::More" => "0.98",
     "blib" => 0
   }
