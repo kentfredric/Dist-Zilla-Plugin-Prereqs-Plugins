@@ -473,7 +473,7 @@
                }
             },
             "name" : "Prereqs::Plugins",
-            "version" : null
+            "version" : "0.1.0"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
