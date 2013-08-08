@@ -480,6 +480,7 @@
             "class" : "Dist::Zilla::Plugin::Prereqs::Plugins",
             "config" : {
                "Dist::Zilla::Plugin::Prereqs::Plugins" : {
+                  "exclude" : [],
                   "phase" : "develop",
                   "relation" : "requires"
                }
