@@ -1,5 +1,5 @@
 ---
-abstract: 'Add all Dist::Zilla plugins presently in use as pre-requisites.'
+abstract: 'Add all Dist::Zilla plugins presently in use as prerequisites.'
 author:
   - 'Kent Fredric <kentfredric@gmail.com>'
 build_requires:

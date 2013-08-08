@@ -9,7 +9,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.1.0';
 }
 
-# ABSTRACT: Add all Dist::Zilla plugins presently in use as pre-requisites.
+# ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
 use Moose;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
@@ -96,7 +96,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in use as pre-requisites.
+Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in use as prerequisites.
 
 =head1 VERSION
 

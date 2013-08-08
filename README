@@ -1,6 +1,6 @@
 NAME
     Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins
-    presently in use as pre-requisites.
+    presently in use as prerequisites.
 
 VERSION
     version 0.1.0
