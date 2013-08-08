@@ -63,6 +63,7 @@ around 'dump_config' => sub {
   my $this_config = {
     phase    => $self->phase,
     relation => $self->relation,
+    exclude => $self->exclude,
   };
   $config->{ q{} . __PACKAGE__ } = $this_config;
   return $config;
