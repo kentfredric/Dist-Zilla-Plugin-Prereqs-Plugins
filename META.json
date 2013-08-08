@@ -1,5 +1,5 @@
 {
-   "abstract" : "Add all Dist::Zilla plugins presently in use as prereqs.",
+   "abstract" : "Add all Dist::Zilla plugins presently in use as pre-requisites.",
    "author" : [
       "Kent Fredric <kentfredric@gmail.com>"
    ],
@@ -111,6 +111,17 @@
       }
    },
    "release_status" : "stable",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins/issues"
+      },
+      "homepage" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins",
+      "repository" : {
+         "type" : "git",
+         "url" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins.git",
+         "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins"
+      }
+   },
    "version" : "0.1.0",
    "x_BuiltWith" : {
       "modules" : {

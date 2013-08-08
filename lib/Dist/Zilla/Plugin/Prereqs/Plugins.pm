@@ -9,7 +9,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.1.0';
 }
 
-# ABSTRACT: Add all Dist::Zilla plugins presently in use as prereqs.
+# ABSTRACT: Add all Dist::Zilla plugins presently in use as pre-requisites.
 
 use Moose;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
@@ -96,7 +96,7 @@ __END__
 
 =head1 NAME
 
-Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in use as prereqs.
+Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in use as pre-requisites.
 
 =head1 VERSION
 
@@ -116,7 +116,7 @@ This is mostly because I am lazy, and the lengthy list of hand-updated dependenc
 on my C<@Author::> bundle started to get overwhelming, and I'd periodically miss something.
 
 This module is kinda C<AutoPrereqs>y, but in ways that I can't imagine being plausible with
-a generic C<AutoPrereqs> tool, at least, not without requiring some nasty reimplementation
+a generic C<AutoPrereqs> tool, at least, not without requiring some nasty re-implementation
 of how C<dist.ini> is parsed.
 
 =head1 METHODS
@@ -207,7 +207,7 @@ May Be specified multiple times.
 
 =item * This module will B<NOT> report C<@Bundles> as dependencies at present.
 
-=item * This module will B<NOT> I<nessecarily> include B<ALL> dependencies, but is only intended to include the majority of them.
+=item * This module will B<NOT> I<necessarily> include B<ALL> dependencies, but is only intended to include the majority of them.
 
 Some plugins, such as my own C<Bootstrap::lib> don't add themselves to the C<dzil> C<< ->plugins() >> list, and as such, it will be invisible to this module.
 

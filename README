@@ -1,6 +1,6 @@
 NAME
     Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins
-    presently in use as prereqs.
+    presently in use as pre-requisites.
 
 VERSION
     version 0.1.0
@@ -19,7 +19,7 @@ DESCRIPTION
 
     This module is kinda "AutoPrereqs"y, but in ways that I can't imagine
     being plausible with a generic "AutoPrereqs" tool, at least, not without
-    requiring some nasty reimplementation of how "dist.ini" is parsed.
+    requiring some nasty re-implementation of how "dist.ini" is parsed.
 
 METHODS
   "mvp_multivalue_args"
@@ -84,7 +84,7 @@ PRIVATE METHODS
 LIMITATIONS
     *   This module will NOT report @Bundles as dependencies at present.
 
-    *   This module will NOT *nessecarily* include ALL dependencies, but is
+    *   This module will NOT *necessarily* include ALL dependencies, but is
         only intended to include the majority of them.
 
         Some plugins, such as my own "Bootstrap::lib" don't add themselves

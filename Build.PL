@@ -12,7 +12,7 @@ my %module_build_args = (
   "configure_requires" => {
     "Module::Build" => "0.4007"
   },
-  "dist_abstract" => "Add all Dist::Zilla plugins presently in use as prereqs.",
+  "dist_abstract" => "Add all Dist::Zilla plugins presently in use as pre-requisites.",
   "dist_author" => [
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
