@@ -464,6 +464,12 @@
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs::Plugins",
+            "config" : {
+               "Dist::Zilla::Plugin::Prereqs::Plugins" : {
+                  "phase" : "develop",
+                  "relation" : "requires"
+               }
+            },
             "name" : "Prereqs::Plugins",
             "version" : "0.1.0"
          },
