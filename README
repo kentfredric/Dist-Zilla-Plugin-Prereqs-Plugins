@@ -7,7 +7,7 @@ VERSION
 
 SYNOPSIS
         [Prereqs::Plugins]
-        ; all plugins are now develop.requires deps 
+        ; all plugins are now develop.requires deps
 
         [Prereqs::Plugins]
         phase = runtime    ; all plugins are now runtime.requires deps
@@ -32,7 +32,7 @@ METHODS
 
   "skip_prereq"
         if ( $instance->skip_prereq( $plugin_instance ) ) {
-        
+
         }
 
   "get_prereq_for"

@@ -12,7 +12,7 @@ BEGIN {
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prereqs.
 
 use Moose;
-use MooseX::Types::Moose qw( ArrayRef Str );
+use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
 with 'Dist::Zilla::Role::PrereqSource';
 
@@ -105,7 +105,7 @@ version 0.1.0
 =head1 SYNOPSIS
 
     [Prereqs::Plugins]
-    ; all plugins are now develop.requires deps 
+    ; all plugins are now develop.requires deps
 
     [Prereqs::Plugins]
     phase = runtime    ; all plugins are now runtime.requires deps
@@ -134,12 +134,12 @@ The list of attributes that can be specified multiple times
 =head2 C<skip_prereq>
 
     if ( $instance->skip_prereq( $plugin_instance ) ) {
-        
+
     }
 
 =head2 C<get_prereq_for>
 
-    my ( $module, $version ) = $instance->get_prereq_for( $plugin_instance ); 
+    my ( $module, $version ) = $instance->get_prereq_for( $plugin_instance );
 
 =head2 C<register_prereqs>
 
@@ -169,7 +169,7 @@ The target installation phase to inject into:
 
 The type of dependency relation to create:
 
-=over 4 
+=over 4
 
 =item * C<requires>
 
@@ -179,7 +179,7 @@ The type of dependency relation to create:
 
 =item * C<conflicts>
 
-Though think incredibly hard before using this last one ;) 
+Though think incredibly hard before using this last one ;)
 
 =back
 
