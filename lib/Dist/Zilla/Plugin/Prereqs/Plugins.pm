@@ -3,7 +3,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-# ABSTRACT: Add all Dist::Zilla plugins presently in use as prereqs.
+# ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
 use Moose;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
@@ -24,7 +24,7 @@ This is mostly because I am lazy, and the lengthy list of hand-updated dependenc
 on my C<@Author::> bundle started to get overwhelming, and I'd periodically miss something.
 
 This module is kinda C<AutoPrereqs>y, but in ways that I can't imagine being plausible with
-a generic C<AutoPrereqs> tool, at least, not without requiring some nasty reimplementation
+a generic C<AutoPrereqs> tool, at least, not without requiring some nasty re-implementation
 of how C<dist.ini> is parsed.
 
 =head1 LIMITATIONS
@@ -33,7 +33,7 @@ of how C<dist.ini> is parsed.
 
 =item * This module will B<NOT> report C<@Bundles> as dependencies at present.
 
-=item * This module will B<NOT> I<nessecarily> include B<ALL> dependencies, but is only intended to include the majority of them.
+=item * This module will B<NOT> I<necessarily> include B<ALL> dependencies, but is only intended to include the majority of them.
 
 Some plugins, such as my own C<Bootstrap::lib> don't add themselves to the C<dzil> C<< ->plugins() >> list, and as such, it will be invisible to this module.
 
@@ -165,6 +165,7 @@ around 'dump_config' => sub {
   my $this_config = {
     phase    => $self->phase,
     relation => $self->relation,
+    exclude  => $self->exclude,
   };
   $config->{ q{} . __PACKAGE__ } = $this_config;
   return $config;

@@ -1,6 +1,6 @@
 # NAME
 
-Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in use as prereqs.
+Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in use as prerequisites.
 
 # VERSION
 
@@ -20,7 +20,7 @@ This is mostly because I am lazy, and the lengthy list of hand-updated dependenc
 on my `@Author::` bundle started to get overwhelming, and I'd periodically miss something.
 
 This module is kinda `AutoPrereqs`y, but in ways that I can't imagine being plausible with
-a generic `AutoPrereqs` tool, at least, not without requiring some nasty reimplementation
+a generic `AutoPrereqs` tool, at least, not without requiring some nasty re-implementation
 of how `dist.ini` is parsed.
 
 # METHODS
@@ -93,7 +93,7 @@ May Be specified multiple times.
 # LIMITATIONS
 
 - This module will __NOT__ report `@Bundles` as dependencies at present.
-- This module will __NOT__ _nessecarily_ include __ALL__ dependencies, but is only intended to include the majority of them.
+- This module will __NOT__ _necessarily_ include __ALL__ dependencies, but is only intended to include the majority of them.
 
     Some plugins, such as my own `Bootstrap::lib` don't add themselves to the `dzil` `->plugins()` list, and as such, it will be invisible to this module.
 
