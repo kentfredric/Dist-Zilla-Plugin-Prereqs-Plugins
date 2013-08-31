@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
 {{$NEXT}}
+
+0.1.1 2013-08-31T02:22:18Z
  [!Minor]
  - Rebuilt with newer toolkits/tests
  - Ramp dzil deps
