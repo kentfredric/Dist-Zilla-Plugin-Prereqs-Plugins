@@ -62,7 +62,7 @@
             "Dist::Zilla::Plugin::Prereqs" : "4.300037",
             "Dist::Zilla::Plugin::Prereqs::MatchInstalled" : "v0.1.1",
             "Dist::Zilla::Plugin::Prereqs::MatchInstalled::All" : "v0.1.0",
-            "Dist::Zilla::Plugin::Prereqs::Plugins" : "v0.1.1",
+            "Dist::Zilla::Plugin::Prereqs::Plugins" : "0",
             "Dist::Zilla::Plugin::PruneCruft" : "4.300037",
             "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.131500",
             "Dist::Zilla::Plugin::ReadmeFromPod" : "0.18",
@@ -500,7 +500,7 @@
                }
             },
             "name" : "Prereqs::Plugins",
-            "version" : "0.1.1"
+            "version" : null
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs::MatchInstalled::All",
