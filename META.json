@@ -62,7 +62,7 @@
             "Dist::Zilla::Plugin::Prereqs" : "4.300037",
             "Dist::Zilla::Plugin::Prereqs::MatchInstalled" : "v0.1.1",
             "Dist::Zilla::Plugin::Prereqs::MatchInstalled::All" : "v0.1.0",
-            "Dist::Zilla::Plugin::Prereqs::Plugins" : "v0.1.1",
+            "Dist::Zilla::Plugin::Prereqs::Plugins" : "v0.1.2",
             "Dist::Zilla::Plugin::PruneCruft" : "4.300037",
             "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.131500",
             "Dist::Zilla::Plugin::ReadmeFromPod" : "0.18",
@@ -101,8 +101,8 @@
       },
       "test" : {
          "requires" : {
-            "IO::Handle" : "1.34",
-            "IPC::Open3" : "1.13",
+            "IO::Handle" : "0",
+            "IPC::Open3" : "0",
             "Test::More" : "0.98"
          }
       }
@@ -110,7 +110,7 @@
    "provides" : {
       "Dist::Zilla::Plugin::Prereqs::Plugins" : {
          "file" : "lib/Dist/Zilla/Plugin/Prereqs/Plugins.pm",
-         "version" : "v0.1.1"
+         "version" : "v0.1.2"
       }
    },
    "release_status" : "stable",
@@ -125,7 +125,7 @@
          "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins"
       }
    },
-   "version" : "0.1.1",
+   "version" : "0.1.2",
    "x_BuiltWith" : {
       "modules" : {
          "Dist::Zilla::PluginBundle::Author::KENTNL" : "1.8.3",
@@ -500,7 +500,7 @@
                }
             },
             "name" : "Prereqs::Plugins",
-            "version" : "0.1.1"
+            "version" : "0.1.2"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs::MatchInstalled::All",
@@ -542,7 +542,9 @@
                      "warnings",
                      "strict",
                      "blib",
-                     "Dist::Zilla::Plugin::Authority"
+                     "Dist::Zilla::Plugin::Authority",
+                     "IO::Handle",
+                     "IPC::Open3"
                   ],
                   "upgrade_perl" : null
                }

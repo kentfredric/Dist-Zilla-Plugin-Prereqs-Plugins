@@ -1,5 +1,16 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
+0.1.2 2013-08-31T02:30:12Z
+ [Bugfix]
+ - Revert regression introduced by MatchInstalled + core modules
+
+ [Dependencies::Changed / develop requires]
+ - Dist::Zilla::Plugin::Prereqs::Plugins v0.1.1 → v0.1.2
+
+ [Dependencies::Changed / test requires]
+ - IO::Handle 1.34 → 0
+ - IPC::Open3 1.13 → 0
+
 0.1.1 2013-08-31T02:22:18Z
  [!Minor]
  - Rebuilt with newer toolkits/tests

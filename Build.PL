@@ -17,7 +17,7 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Prereqs-Plugins",
-  "dist_version" => "0.1.1",
+  "dist_version" => "0.1.2",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Prereqs::Plugins",
   "recommends" => {},
@@ -33,8 +33,8 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
-    "IO::Handle" => "1.34",
-    "IPC::Open3" => "1.13",
+    "IO::Handle" => 0,
+    "IPC::Open3" => 0,
     "Test::More" => "0.98"
   }
 );
