@@ -17,25 +17,25 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Prereqs-Plugins",
-  "dist_version" => "0.1.0",
+  "dist_version" => "0.1.1",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Prereqs::Plugins",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Dist::Zilla::Role::PrereqSource" => "4.300035",
+    "Dist::Zilla::Role::PrereqSource" => "4.300037",
     "Moose" => "2.1005",
     "MooseX::Types::Moose" => "0.36",
-    "Scalar::Util" => "1.3",
+    "Scalar::Util" => "1.31",
     "perl" => "v5.10.0",
     "strict" => 0,
     "warnings" => 0
   },
   "script_files" => [],
   "test_requires" => {
-    "Capture::Tiny" => "0.22",
-    "Test::More" => "0.98",
-    "blib" => 0
+    "IO::Handle" => "1.34",
+    "IPC::Open3" => "1.13",
+    "Test::More" => "0.98"
   }
 );
 
