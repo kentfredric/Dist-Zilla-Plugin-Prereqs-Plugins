@@ -1,11 +1,11 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
-0.1.1 2013-08-31T02:15:17Z
+0.1.1 2013-08-31T02:20:13Z
  [!Minor]
  - Rebuilt with newer toolkits/tests
  - Ramp dzil deps
 
-  [Dependencies::Added / develop requires]
+ [Dependencies::Added / develop requires]
  - Dist::Zilla::Plugin::Bootstrap::lib 0.03000101
  - Test::Kwalitee 1.13
 
@@ -32,7 +32,7 @@ Release history for Dist-Zilla-Plugin-Prereqs-Plugins
  - Dist::Zilla::Plugin::PodCoverageTests 4.300035 → 4.300037
  - Dist::Zilla::Plugin::PodSyntaxTests 4.300035 → 4.300037
  - Dist::Zilla::Plugin::Prereqs 4.300035 → 4.300037
- - Dist::Zilla::Plugin::Prereqs::Plugins v0.1.0 → 0
+ - Dist::Zilla::Plugin::Prereqs::Plugins v0.1.0 → v0.1.1
  - Dist::Zilla::Plugin::PruneCruft 4.300035 → 4.300037
  - Dist::Zilla::Plugin::Test::Compile 2.018 → 2.023
  - Dist::Zilla::Plugin::Test::Kwalitee 2.03 → 2.06
