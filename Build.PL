@@ -17,24 +17,31 @@ my %module_build_args = (
     "Kent Fredric <kentfredric\@gmail.com>"
   ],
   "dist_name" => "Dist-Zilla-Plugin-Prereqs-Plugins",
-  "dist_version" => "0.1.2",
+  "dist_version" => "0.1.3",
   "license" => "perl",
   "module_name" => "Dist::Zilla::Plugin::Prereqs::Plugins",
   "recommends" => {},
   "recursive_test_files" => 1,
   "requires" => {
-    "Dist::Zilla::Role::PrereqSource" => "4.300037",
+    "Dist::Zilla::Role::PrereqSource" => "4.300039",
     "Moose" => "2.1005",
-    "MooseX::Types::Moose" => "0.36",
-    "Scalar::Util" => "1.31",
+    "MooseX::Types::Moose" => "0.38",
+    "Scalar::Util" => "1.32",
     "perl" => "v5.10.0",
     "strict" => 0,
     "warnings" => 0
   },
   "script_files" => [],
   "test_requires" => {
+    "Cwd" => 0,
+    "File::Copy::Recursive" => "0.38",
+    "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
+    "Path::FindDev" => "v0.3.1",
+    "Path::Tiny" => "0.036",
+    "Test::DZil" => "4.300039",
+    "Test::Fatal" => "0.013",
     "Test::More" => "0.98"
   }
 );

@@ -6,7 +6,7 @@ BEGIN {
   $Dist::Zilla::Plugin::Prereqs::Plugins::AUTHORITY = 'cpan:KENTNL';
 }
 {
-  $Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.1.2';
+  $Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.1.3';
 }
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
@@ -101,7 +101,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 =head1 VERSION
 
-version 0.1.2
+version 0.1.3
 
 =head1 SYNOPSIS
 
