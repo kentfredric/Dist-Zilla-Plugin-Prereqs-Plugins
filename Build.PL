@@ -33,9 +33,15 @@ my %module_build_args = (
   },
   "script_files" => [],
   "test_requires" => {
+    "Cwd" => 0,
+    "File::Copy::Recursive" => "0.38",
     "File::Spec" => 0,
     "IO::Handle" => 0,
     "IPC::Open3" => 0,
+    "Path::FindDev" => "v0.3.1",
+    "Path::Tiny" => "0.036",
+    "Test::DZil" => "4.300039",
+    "Test::Fatal" => "0.013",
     "Test::More" => "0.98"
   }
 );
