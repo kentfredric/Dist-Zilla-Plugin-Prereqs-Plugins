@@ -2,13 +2,7 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
-BEGIN {
-  $Dist::Zilla::Plugin::Prereqs::Plugins::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.1.3';
-}
-
+$Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.001004';
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
 use Moose;
@@ -18,23 +12,119 @@ with 'Dist::Zilla::Role::PrereqSource';
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 has phase    => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'develop' }, );
 has relation => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'requires' }, );
+
+
+
+
+
+
+
+
+
+
+
 
 
 has exclude => ( is => ro =>, isa => ArrayRef [Str], lazy => 1, default => sub { [] } );
 
 
+
+
+
 has _exclude_hash => ( is => ro =>, isa => HashRef [Str], lazy => 1, builder => '_build__exclude_hash' );
 
 
+
+
+
+
+
+
+
 sub mvp_multivalue_args { return qw(exclude) }
+
+
+
 
 
 sub _build__exclude_hash {
   my ( $self, ) = @_;
   return { map { ( $_ => 1 ) } @{ $self->exclude } };
 }
+
+
+
+
+
 
 
 sub get_plugin_module {
@@ -45,11 +135,23 @@ sub get_plugin_module {
 }
 
 
+
+
+
+
+
+
+
 sub skip_prereq {
   my ( $self, $plugin ) = @_;
   return 1 if exists $self->_exclude_hash->{ $self->get_plugin_module($plugin) };
   return;
 }
+
+
+
+
+
 
 
 sub get_prereq_for {
@@ -68,6 +170,11 @@ around 'dump_config' => sub {
   $config->{ q{} . __PACKAGE__ } = $this_config;
   return $config;
 };
+
+
+
+
+
 
 
 sub register_prereqs {
@@ -93,7 +200,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -101,7 +208,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 =head1 VERSION
 
-version 0.1.3
+version 0.001004
 
 =head1 SYNOPSIS
 
@@ -220,7 +327,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
