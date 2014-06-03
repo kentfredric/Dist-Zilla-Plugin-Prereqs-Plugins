@@ -28,14 +28,5 @@ twitter_hash_tags = #perl #cpan
 ; auto_prereqs_skip = File::Find
 
 [Prereqs::Plugins]
-[Prereqs::MatchInstalled::All]
-exclude = warnings
-exclude = strict
-exclude = blib
-exclude = Dist::Zilla::Plugin::Authority
-exclude = IO::Handle
-exclude = IPC::Open3
-exclude = File::Spec
-exclude = Cwd
 
 [Prereqs]
