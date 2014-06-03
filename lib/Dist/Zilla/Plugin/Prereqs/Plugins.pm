@@ -5,6 +5,8 @@ package Dist::Zilla::Plugin::Prereqs::Plugins;
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
+# AUTHORITY
+
 use Moose;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
