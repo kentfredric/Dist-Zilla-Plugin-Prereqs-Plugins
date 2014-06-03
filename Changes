@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
 {{$NEXT}}
+
+1.000001 2014-06-03T21:48:19Z
  [Bugfix]
  - stop using 5.10 code in tests.
  - stop using needless dependencies in tests.
