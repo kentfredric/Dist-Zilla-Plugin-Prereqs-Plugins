@@ -29,19 +29,18 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
-    "Cwd" => 0,
     "ExtUtils::MakeMaker" => 0,
     "File::Copy::Recursive" => 0,
     "File::Spec::Functions" => 0,
+    "FindBin" => 0,
     "List::Util" => 0,
-    "Path::FindDev" => 0,
     "Path::Tiny" => 0,
     "Test::DZil" => 0,
     "Test::Fatal" => 0,
     "Test::More" => "0.89",
     "version" => 0
   },
-  "VERSION" => "1.000000",
+  "VERSION" => "1.000001",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -49,15 +48,14 @@ my %WriteMakefileArgs = (
 
 
 my %FallbackPrereqs = (
-  "Cwd" => 0,
   "Dist::Zilla::Role::PrereqSource" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Copy::Recursive" => 0,
   "File::Spec::Functions" => 0,
+  "FindBin" => 0,
   "List::Util" => 0,
   "Moose" => 0,
   "MooseX::Types::Moose" => 0,
-  "Path::FindDev" => 0,
   "Path::Tiny" => 0,
   "Scalar::Util" => 0,
   "Test::DZil" => 0,
