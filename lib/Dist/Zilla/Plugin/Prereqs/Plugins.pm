@@ -133,7 +133,7 @@ sub _build__exclude_hash {
 =cut
 
 sub get_plugin_module {
-  my ( $self, $plugin ) = @_;
+  my ( undef, $plugin ) = @_;
   return if not ref $plugin;
   require Scalar::Util;
   return Scalar::Util::blessed($plugin);
