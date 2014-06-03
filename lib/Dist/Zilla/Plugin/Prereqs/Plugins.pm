@@ -2,8 +2,12 @@ use strict;
 use warnings;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
-$Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.001004';
+
+our $VERSION = '1.000000';
+
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
+
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moose;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
@@ -208,7 +212,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 =head1 VERSION
 
-version 0.001004
+version 1.000000
 
 =head1 SYNOPSIS
 
