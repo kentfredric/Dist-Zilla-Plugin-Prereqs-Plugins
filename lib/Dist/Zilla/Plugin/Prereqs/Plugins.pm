@@ -1,20 +1,87 @@
+use 5.008;    # pragma utf8
 use strict;
 use warnings;
+use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
-BEGIN {
-  $Dist::Zilla::Plugin::Prereqs::Plugins::AUTHORITY = 'cpan:KENTNL';
-}
-{
-  $Dist::Zilla::Plugin::Prereqs::Plugins::VERSION = '0.1.3';
-}
+
+our $VERSION = '1.000000';
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
-use Moose;
+our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
+
+use Moose qw( with has around );
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
 with 'Dist::Zilla::Role::PrereqSource';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -22,13 +89,37 @@ has phase    => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'develop'
 has relation => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'requires' }, );
 
 
+
+
+
+
+
+
+
+
+
+
+
 has exclude => ( is => ro =>, isa => ArrayRef [Str], lazy => 1, default => sub { [] } );
+
+
+
 
 
 has _exclude_hash => ( is => ro =>, isa => HashRef [Str], lazy => 1, builder => '_build__exclude_hash' );
 
 
+
+
+
+
+
+
+
 sub mvp_multivalue_args { return qw(exclude) }
+
+
+
 
 
 sub _build__exclude_hash {
@@ -37,12 +128,24 @@ sub _build__exclude_hash {
 }
 
 
+
+
+
+
+
 sub get_plugin_module {
-  my ( $self, $plugin ) = @_;
+  my ( undef, $plugin ) = @_;
   return if not ref $plugin;
   require Scalar::Util;
   return Scalar::Util::blessed($plugin);
 }
+
+
+
+
+
+
+
 
 
 sub skip_prereq {
@@ -50,6 +153,11 @@ sub skip_prereq {
   return 1 if exists $self->_exclude_hash->{ $self->get_plugin_module($plugin) };
   return;
 }
+
+
+
+
+
 
 
 sub get_prereq_for {
@@ -68,6 +176,11 @@ around 'dump_config' => sub {
   $config->{ q{} . __PACKAGE__ } = $this_config;
   return $config;
 };
+
+
+
+
+
 
 
 sub register_prereqs {
@@ -93,7 +206,7 @@ __END__
 
 =pod
 
-=encoding utf-8
+=encoding UTF-8
 
 =head1 NAME
 
@@ -101,7 +214,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 =head1 VERSION
 
-version 0.1.3
+version 1.000000
 
 =head1 SYNOPSIS
 
@@ -220,7 +333,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
