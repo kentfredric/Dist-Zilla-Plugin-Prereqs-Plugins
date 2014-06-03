@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 # VERSION
 
-version 0.1.3
+version 1.000000
 
 # SYNOPSIS
 
@@ -47,7 +47,7 @@ The list of attributes that can be specified multiple times
 
 ## `register_prereqs`
 
-See [`Dist::Zilla::Role::__PrereqSource__`](http://search.cpan.org/perldoc?Dist::Zilla::Role::PrereqSource)
+See [`Dist::Zilla::Role::**PrereqSource**`](https://metacpan.org/pod/Dist::Zilla::Role::PrereqSource)
 
 # ATTRIBUTES
 
@@ -92,8 +92,8 @@ May Be specified multiple times.
 
 # LIMITATIONS
 
-- This module will __NOT__ report `@Bundles` as dependencies at present.
-- This module will __NOT__ _necessarily_ include __ALL__ dependencies, but is only intended to include the majority of them.
+- This module will **NOT** report `@Bundles` as dependencies at present.
+- This module will **NOT** _necessarily_ include **ALL** dependencies, but is only intended to include the majority of them.
 
     Some plugins, such as my own `Bootstrap::lib` don't add themselves to the `dzil` `->plugins()` list, and as such, it will be invisible to this module.
 
@@ -103,7 +103,7 @@ Kent Fredric <kentfredric@gmail.com>
 
 # COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
