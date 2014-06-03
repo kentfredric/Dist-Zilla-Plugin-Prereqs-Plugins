@@ -118,7 +118,7 @@ my $static_prereqs = do { my $x = {
                                       'Scalar::Util' => '1.38',
                                       'perl' => '5.008',
                                       'strict' => '0',
-                                      'utf8' => '1.13',
+                                      'utf8' => '0',
                                       'warnings' => '0'
                                     }
                     },

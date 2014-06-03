@@ -25,7 +25,7 @@ my %WriteMakefileArgs = (
     "MooseX::Types::Moose" => "0.44",
     "Scalar::Util" => "1.38",
     "strict" => 0,
-    "utf8" => "1.13",
+    "utf8" => 0,
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
@@ -64,7 +64,7 @@ my %FallbackPrereqs = (
   "Test::Fatal" => "0.013",
   "Test::More" => "1.001003",
   "strict" => 0,
-  "utf8" => "1.13",
+  "utf8" => 0,
   "version" => "0.9908",
   "warnings" => 0
 );

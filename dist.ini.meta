@@ -37,5 +37,6 @@ exclude = IO::Handle
 exclude = IPC::Open3
 exclude = File::Spec
 exclude = Cwd
+exclude = utf8
 
 [Prereqs]
