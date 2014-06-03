@@ -3,7 +3,7 @@
  - ExtUtils::MakeMaker 6.98
 
  [Added / runtime requires]
- - utf8 1.13
+ - utf8
 
  [Added / test requires]
  - ExtUtils::MakeMaker 6.98
