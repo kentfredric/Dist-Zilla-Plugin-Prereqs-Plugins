@@ -9,7 +9,7 @@ our $VERSION = '1.000000';
 
 # AUTHORITY
 
-use Moose;
+use Moose qw( with has around );
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
 with 'Dist::Zilla::Role::PrereqSource';
