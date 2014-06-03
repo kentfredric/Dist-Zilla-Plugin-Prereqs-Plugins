@@ -1,6 +1,17 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
 {{$NEXT}}
+ [00 Major]
+ - Packaging changes sufficient to annoy downstreams working by hand.
+
+ [01 Version Scheme]
+ - Migrating from x.y.z to x.yyyyyy
+ - this is the primary reason for the 1.x on the box.
+
+ [02 Migrating to EUMM for installer]
+ - EUMM now used to install
+ - "latest" Dependencies now only bump recommends, not requires.
+
  [Dependencies::Stats]
  - Dependencies changed since 0.1.3, see Changes.deps* for details
  - build: -1
