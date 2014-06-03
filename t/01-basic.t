@@ -13,13 +13,13 @@ my $dist = 'fake_dist_01';
 
 my $source = path($FindBin::Bin)->parent->child('corpus')->child($dist);
 
-my $tempdir = tempdir;
+my $tempdir = Path::Tiny->tempdir();
 
 rcopy( "$source", "$tempdir" );
 
 my $distini = $tempdir->child('dist.ini');
 
-BAIL_OUT("test setup failed to copy to tempdir") if not -e $distini or -f $distini;
+BAIL_OUT("test setup failed to copy to tempdir") if not -e $distini or -d $distini;
 
 is(
   exception {
