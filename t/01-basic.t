@@ -2,9 +2,9 @@ use strict;
 use warnings;
 
 use Test::More;
-use FindBin qw( path tempdir );
+use FindBin;
 
-use Path::Tiny;
+use Path::Tiny qw( path tempdir );
 use File::Copy::Recursive qw( rcopy );
 use Test::DZil;
 use Test::Fatal;
