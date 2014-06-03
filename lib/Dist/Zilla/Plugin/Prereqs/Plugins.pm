@@ -1,5 +1,6 @@
 use strict;
 use warnings;
+use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
@@ -132,7 +133,7 @@ sub _build__exclude_hash {
 
 
 sub get_plugin_module {
-  my ( $self, $plugin ) = @_;
+  my ( undef, $plugin ) = @_;
   return if not ref $plugin;
   require Scalar::Util;
   return Scalar::Util::blessed($plugin);
