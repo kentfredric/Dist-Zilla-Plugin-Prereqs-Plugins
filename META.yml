@@ -553,7 +553,7 @@ x_Dist_Zilla:
           phase: develop
           relation: requires
       name: Prereqs::Plugins
-      version: '0.001004'
+      version: '1.000000'
     -
       class: Dist::Zilla::Plugin::Prereqs::MatchInstalled::All
       config:

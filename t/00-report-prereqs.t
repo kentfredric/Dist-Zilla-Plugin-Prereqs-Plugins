@@ -83,7 +83,7 @@ my $static_prereqs = do { my $x = {
                                       'Dist::Zilla::Plugin::PodWeaver' => '4.005',
                                       'Dist::Zilla::Plugin::Prereqs' => '5.019',
                                       'Dist::Zilla::Plugin::Prereqs::MatchInstalled::All' => '1.000000',
-                                      'Dist::Zilla::Plugin::Prereqs::Plugins' => '0.001004',
+                                      'Dist::Zilla::Plugin::Prereqs::Plugins' => '1.000000',
                                       'Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled' => '0.001000',
                                       'Dist::Zilla::Plugin::ReadmeAnyFromPod' => '0.141120',
                                       'Dist::Zilla::Plugin::ReadmeFromPod' => '0.21',
