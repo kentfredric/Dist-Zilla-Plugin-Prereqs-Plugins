@@ -36,6 +36,7 @@ with 'Dist::Zilla::Role::PrereqSource';
 
 
 
+has phase => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'develop' }, );
 
 
 
@@ -57,35 +58,6 @@ with 'Dist::Zilla::Role::PrereqSource';
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-has phase    => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'develop' }, );
 has relation => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'requires' }, );
 
 
