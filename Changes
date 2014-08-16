@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
 {{$NEXT}}
+
+1.000002 2014-08-16T19:59:38Z
  [00 Trivial]
  - CPANDAY!
  - no code changes.
