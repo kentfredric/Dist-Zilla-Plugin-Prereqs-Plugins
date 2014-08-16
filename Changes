@@ -1,6 +1,6 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
-1.000002 2014-08-16T19:56:44Z
+1.000002 2014-08-16T19:59:38Z
  [00 Trivial]
  - CPANDAY!
  - no code changes.
@@ -16,6 +16,9 @@ Release history for Dist-Zilla-Plugin-Prereqs-Plugins
  [Metadata]
  - move to kentnl org.
  - recognise 1x contributor.
+
+ [Misc]
+ - Improve source side POD to reduce build side whitespace.
 
  [Tests]
  - Test::ReportPrereqs updated.
