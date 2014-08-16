@@ -120,13 +120,13 @@
    "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins/issues"
+         "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins/issues"
       },
-      "homepage" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins",
+      "homepage" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins",
       "repository" : {
          "type" : "git",
-         "url" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins.git",
-         "web" : "https://github.com/kentfredric/Dist-Zilla-Plugin-Prereqs-Plugins"
+         "url" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins.git",
+         "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins"
       }
    },
    "version" : "1.000002",
@@ -164,7 +164,7 @@
          "Dist::Zilla::Plugin::PodSyntaxTests" : "5.020",
          "Dist::Zilla::Plugin::PodWeaver" : "4.006",
          "Dist::Zilla::Plugin::Prereqs" : "5.020",
-         "Dist::Zilla::Plugin::Prereqs::Plugins" : "1.000001",
+         "Dist::Zilla::Plugin::Prereqs::Plugins" : "1.000002",
          "Dist::Zilla::Plugin::Prereqs::Recommend::MatchInstalled" : "0.002001",
          "Dist::Zilla::Plugin::ReadmeAnyFromPod" : "0.142250",
          "Dist::Zilla::Plugin::ReadmeFromPod" : "0.21",
@@ -800,7 +800,7 @@
                }
             },
             "name" : "Prereqs::Plugins",
-            "version" : "1.000001"
+            "version" : "1.000002"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
