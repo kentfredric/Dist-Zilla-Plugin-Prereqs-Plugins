@@ -17,6 +17,9 @@ Release history for Dist-Zilla-Plugin-Prereqs-Plugins
  - move to kentnl org.
  - recognise 1x contributor.
 
+ [Misc]
+ - Improve source side POD to reduce build side whitespace.
+
  [Tests]
  - Test::ReportPrereqs updated.
 

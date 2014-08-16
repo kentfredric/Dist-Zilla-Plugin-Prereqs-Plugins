@@ -16,37 +16,6 @@ use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
 with 'Dist::Zilla::Role::PrereqSource';
 
-=head1 SYNOPSIS
-
-    [Prereqs::Plugins]
-    ; all plugins are now develop.requires deps
-
-    [Prereqs::Plugins]
-    phase = runtime    ; all plugins are now runtime.requires deps
-
-=head1 DESCRIPTION
-
-This is mostly because I am lazy, and the lengthy list of hand-updated dependencies
-on my C<@Author::> bundle started to get overwhelming, and I'd periodically miss something.
-
-This module is kinda C<AutoPrereqs>y, but in ways that I can't imagine being plausible with
-a generic C<AutoPrereqs> tool, at least, not without requiring some nasty re-implementation
-of how C<dist.ini> is parsed.
-
-=head1 LIMITATIONS
-
-=over 4
-
-=item * This module will B<NOT> report C<@Bundles> as dependencies at present.
-
-=item * This module will B<NOT> I<necessarily> include B<ALL> dependencies, but is only intended to include the majority of them.
-
-Some plugins, such as my own C<Bootstrap::lib> don't add themselves to the C<dzil> C<< ->plugins() >> list, and as such, it will be invisible to this module.
-
-=back
-
-=cut
-
 =attr C<phase>
 
 The target installation phase to inject into:
@@ -64,6 +33,10 @@ The target installation phase to inject into:
 =item * C<develop>
 
 =back
+
+=cut
+
+has phase => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'develop' }, );
 
 =attr C<relation>
 
@@ -85,7 +58,6 @@ Though think incredibly hard before using this last one ;)
 
 =cut
 
-has phase    => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'develop' }, );
 has relation => ( is => ro =>, isa => Str, lazy => 1, default => sub { 'requires' }, );
 
 =attr C<exclude>
@@ -201,3 +173,34 @@ __PACKAGE__->meta->make_immutable;
 no Moose;
 
 1;
+
+=head1 SYNOPSIS
+
+    [Prereqs::Plugins]
+    ; all plugins are now develop.requires deps
+
+    [Prereqs::Plugins]
+    phase = runtime    ; all plugins are now runtime.requires deps
+
+=head1 DESCRIPTION
+
+This is mostly because I am lazy, and the lengthy list of hand-updated dependencies
+on my C<@Author::> bundle started to get overwhelming, and I'd periodically miss something.
+
+This module is kinda C<AutoPrereqs>y, but in ways that I can't imagine being plausible with
+a generic C<AutoPrereqs> tool, at least, not without requiring some nasty re-implementation
+of how C<dist.ini> is parsed.
+
+=head1 LIMITATIONS
+
+=over 4
+
+=item * This module will B<NOT> report C<@Bundles> as dependencies at present.
+
+=item * This module will B<NOT> I<necessarily> include B<ALL> dependencies, but is only intended to include the majority of them.
+
+Some plugins, such as my own C<Bootstrap::lib> don't add themselves to the C<dzil> C<< ->plugins() >> list, and as such, it will be invisible to this module.
+
+=back
+
+=cut
