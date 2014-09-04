@@ -5,13 +5,14 @@ use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-our $VERSION = '1.000003';
+our $VERSION = '1.001000';
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
 our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moose qw( with has around );
+use Dist::Zilla::Util::ConfigDumper qw( config_dumper );
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 
 with 'Dist::Zilla::Role::PrereqSource';
@@ -137,17 +138,7 @@ sub get_prereq_for {
   return ( $self->get_plugin_module($plugin), 0 );
 }
 
-around 'dump_config' => sub {
-  my ( $orig, $self, @args ) = @_;
-  my $config      = $self->$orig(@args);
-  my $this_config = {
-    phase    => $self->phase,
-    relation => $self->relation,
-    exclude  => $self->exclude,
-  };
-  $config->{ q{} . __PACKAGE__ } = $this_config;
-  return $config;
-};
+around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude ) );
 
 
 
@@ -186,7 +177,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 =head1 VERSION
 
-version 1.000003
+version 1.001000
 
 =head1 SYNOPSIS
 

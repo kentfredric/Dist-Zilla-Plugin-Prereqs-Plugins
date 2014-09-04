@@ -23,9 +23,10 @@ name: Dist-Zilla-Plugin-Prereqs-Plugins
 provides:
   Dist::Zilla::Plugin::Prereqs::Plugins:
     file: lib/Dist/Zilla/Plugin/Prereqs/Plugins.pm
-    version: '1.000003'
+    version: '1.001000'
 requires:
   Dist::Zilla::Role::PrereqSource: '0'
+  Dist::Zilla::Util::ConfigDumper: '0'
   Moose: '0'
   MooseX::Types::Moose: '0'
   Scalar::Util: '0'
@@ -37,7 +38,7 @@ resources:
   bugtracker: https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins/issues
   homepage: https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins
   repository: https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins.git
-version: '1.000003'
+version: '1.001000'
 x_BuiltWith:
   modules:
     CPAN::Meta: '2.142060'
@@ -91,6 +92,7 @@ x_BuiltWith:
     Dist::Zilla::Plugin::UploadToCPAN: '5.020'
     Dist::Zilla::PluginBundle::Author::KENTNL: '2.020000'
     Dist::Zilla::Role::PrereqSource: '5.020'
+    Dist::Zilla::Util::ConfigDumper: '0.003004'
     ExtUtils::MakeMaker: '6.98'
     File::Copy::Recursive: '0.38'
     File::Spec: '3.49'
@@ -458,7 +460,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: '0'
-          tag: 1.000003-source
+          tag: 1.001000-source
           tag_format: '%v-source'
           tag_message: v%v
           time_zone: local
@@ -512,7 +514,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: releases
           signed: '0'
-          tag: '1.000003'
+          tag: '1.001000'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local

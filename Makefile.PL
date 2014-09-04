@@ -21,6 +21,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Dist::Zilla::Plugin::Prereqs::Plugins",
   "PREREQ_PM" => {
     "Dist::Zilla::Role::PrereqSource" => 0,
+    "Dist::Zilla::Util::ConfigDumper" => 0,
     "Moose" => 0,
     "MooseX::Types::Moose" => 0,
     "Scalar::Util" => 0,
@@ -38,7 +39,7 @@ my %WriteMakefileArgs = (
     "Test::Fatal" => 0,
     "Test::More" => "0.89"
   },
-  "VERSION" => "1.000003",
+  "VERSION" => "1.001000",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -47,6 +48,7 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Dist::Zilla::Role::PrereqSource" => 0,
+  "Dist::Zilla::Util::ConfigDumper" => 0,
   "ExtUtils::MakeMaker" => 0,
   "File::Copy::Recursive" => 0,
   "File::Spec" => 0,
