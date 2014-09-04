@@ -292,7 +292,7 @@ Some plugins, such as my own C<Bootstrap::lib> don't add themselves to the C<dzi
 
 =head1 AUTHOR
 
-Kent Fredric <kentfredric@gmail.com>
+Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
