@@ -1,6 +1,28 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
-1.000002
+1.001000
+ [Added / develop requires]
+ - Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes 0.001001
+
+ [Added / runtime requires]
+ - Dist::Zilla::Util::ConfigDumper
+
+ [Added / test requires]
+ - Dist::Zilla::Util::Test::KENTNL 1.003001
+
+ [Changed / develop suggests]
+ - Dist::Zilla::PluginBundle::Author::KENTNL 2.017002 → 2.020000
+
+ [Changed / test recommends]
+ - Test::More 1.001003 → 1.001006
+
+ [Removed / test requires]
+ - File::Copy::Recursive
+ - FindBin
+ - Path::Tiny
+ - Test::Fatal
+
+1.000002 2014-08-16T19:59:38Z
  [Added / develop requires]
  - Dist::Zilla::Plugin::CopyFilesFromBuild
  - Dist::Zilla::Plugin::Git::Contributors 0.006

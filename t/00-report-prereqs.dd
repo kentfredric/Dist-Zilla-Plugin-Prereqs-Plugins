@@ -9,6 +9,7 @@ do { my $x = {
                       },
        'develop' => {
                       'requires' => {
+                                      'Dist::Zilla::Plugin::Author::KENTNL::RecommendFixes' => '0.001001',
                                       'Dist::Zilla::Plugin::Authority' => '1.006',
                                       'Dist::Zilla::Plugin::AutoPrereqs' => '0',
                                       'Dist::Zilla::Plugin::Bootstrap::lib' => '0',
@@ -64,12 +65,13 @@ do { my $x = {
                                     },
                       'suggests' => {
                                       'Dist::Zilla::App::Command::bakeini' => '0.001002',
-                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.017002'
+                                      'Dist::Zilla::PluginBundle::Author::KENTNL' => '2.020000'
                                     }
                     },
        'runtime' => {
                       'requires' => {
                                       'Dist::Zilla::Role::PrereqSource' => '0',
+                                      'Dist::Zilla::Util::ConfigDumper' => '0',
                                       'Moose' => '0',
                                       'MooseX::Types::Moose' => '0',
                                       'Scalar::Util' => '0',
@@ -83,16 +85,13 @@ do { my $x = {
                    'recommends' => {
                                      'CPAN::Meta' => '2.120900',
                                      'ExtUtils::MakeMaker' => '6.98',
-                                     'Test::More' => '1.001003'
+                                     'Test::More' => '1.001006'
                                    },
                    'requires' => {
+                                   'Dist::Zilla::Util::Test::KENTNL' => '1.003001',
                                    'ExtUtils::MakeMaker' => '0',
-                                   'File::Copy::Recursive' => '0',
                                    'File::Spec' => '0',
-                                   'FindBin' => '0',
-                                   'Path::Tiny' => '0',
                                    'Test::DZil' => '0',
-                                   'Test::Fatal' => '0',
                                    'Test::More' => '0.89'
                                  }
                  }

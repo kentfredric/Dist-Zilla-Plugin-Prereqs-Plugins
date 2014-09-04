@@ -2,37 +2,24 @@ use strict;
 use warnings;
 
 use Test::More;
-use FindBin;
+use Dist::Zilla::Util::Test::KENTNL 1.003001 qw( dztest );
+use Test::DZil qw( simple_ini );
 
-use Path::Tiny qw( path tempdir );
-use File::Copy::Recursive qw( rcopy );
-use Test::DZil;
-use Test::Fatal;
-
-my $dist = 'fake_dist_01';
-
-my $source = path($FindBin::Bin)->parent->child('corpus')->child($dist);
-
-my $tempdir = Path::Tiny->tempdir();
-
-rcopy( "$source", "$tempdir" );
-
-my $distini = $tempdir->child('dist.ini');
-
-BAIL_OUT("test setup failed to copy to tempdir") if not -e $distini or -d $distini;
-
-is(
-  exception {
-    my $builder = Builder->from_config(
-      {
-        dist_root => "$tempdir"
-      }
-    );
-    $builder->build;
-  },
-  undef,
-  'can build dist ' . $dist
+my $test = dztest();
+$test->add_file( 'dist.ini', simple_ini( ['Prereqs::Plugins'], ['GatherDir'], ) );
+$test->build_ok;
+$test->meta_path_deeply(
+  '/prereqs/develop/requires/',
+  [
+    {
+      'Dist::Zilla::Plugin::FinderCode'       => '0',
+      'Dist::Zilla::Plugin::GatherDir'        => '0',
+      'Dist::Zilla::Plugin::Prereqs::Plugins' => '0',
+    }
+  ]
 );
+note explain $test->builder->log_messages;
+note explain $test->distmeta;
 
 done_testing;
 

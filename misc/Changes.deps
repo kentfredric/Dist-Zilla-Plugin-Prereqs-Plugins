@@ -1,6 +1,19 @@
 This file contains changes in REQUIRED dependencies for standard CPAN phases (configure/build/runtime/test)
 
-1.000002
+1.001000
+ [Added / runtime requires]
+ - Dist::Zilla::Util::ConfigDumper
+
+ [Added / test requires]
+ - Dist::Zilla::Util::Test::KENTNL 1.003001
+
+ [Removed / test requires]
+ - File::Copy::Recursive
+ - FindBin
+ - Path::Tiny
+ - Test::Fatal
+
+1.000002 2014-08-16T19:59:38Z
  [Added / test requires]
  - File::Spec
 

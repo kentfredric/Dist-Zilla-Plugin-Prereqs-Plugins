@@ -11,7 +11,7 @@ use ExtUtils::MakeMaker ;
 
 my %WriteMakefileArgs = (
   "ABSTRACT" => "Add all Dist::Zilla plugins presently in use as prerequisites.",
-  "AUTHOR" => "Kent Fredric <kentfredric\@gmail.com>",
+  "AUTHOR" => "Kent Fredric <kentnl\@cpan.org>",
   "CONFIGURE_REQUIRES" => {
     "ExtUtils::MakeMaker" => 0
   },
@@ -21,6 +21,7 @@ my %WriteMakefileArgs = (
   "NAME" => "Dist::Zilla::Plugin::Prereqs::Plugins",
   "PREREQ_PM" => {
     "Dist::Zilla::Role::PrereqSource" => 0,
+    "Dist::Zilla::Util::ConfigDumper" => 0,
     "Moose" => 0,
     "MooseX::Types::Moose" => 0,
     "Scalar::Util" => 0,
@@ -29,16 +30,13 @@ my %WriteMakefileArgs = (
     "warnings" => 0
   },
   "TEST_REQUIRES" => {
+    "Dist::Zilla::Util::Test::KENTNL" => "1.003001",
     "ExtUtils::MakeMaker" => 0,
-    "File::Copy::Recursive" => 0,
     "File::Spec" => 0,
-    "FindBin" => 0,
-    "Path::Tiny" => 0,
     "Test::DZil" => 0,
-    "Test::Fatal" => 0,
     "Test::More" => "0.89"
   },
-  "VERSION" => "1.000002",
+  "VERSION" => "1.001000",
   "test" => {
     "TESTS" => "t/*.t t/00-compile/*.t"
   }
@@ -47,16 +45,14 @@ my %WriteMakefileArgs = (
 
 my %FallbackPrereqs = (
   "Dist::Zilla::Role::PrereqSource" => 0,
+  "Dist::Zilla::Util::ConfigDumper" => 0,
+  "Dist::Zilla::Util::Test::KENTNL" => "1.003001",
   "ExtUtils::MakeMaker" => 0,
-  "File::Copy::Recursive" => 0,
   "File::Spec" => 0,
-  "FindBin" => 0,
   "Moose" => 0,
   "MooseX::Types::Moose" => 0,
-  "Path::Tiny" => 0,
   "Scalar::Util" => 0,
   "Test::DZil" => 0,
-  "Test::Fatal" => 0,
   "Test::More" => "0.89",
   "strict" => 0,
   "utf8" => 0,

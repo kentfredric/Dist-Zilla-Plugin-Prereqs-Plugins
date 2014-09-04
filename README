@@ -3,7 +3,7 @@ NAME
     presently in use as prerequisites.
 
 VERSION
-    version 1.000002
+    version 1.001000
 
 SYNOPSIS
         [Prereqs::Plugins]
@@ -92,7 +92,7 @@ LIMITATIONS
         to this module.
 
 AUTHOR
-    Kent Fredric <kentfredric@gmail.com>
+    Kent Fredric <kentnl@cpan.org>
 
 COPYRIGHT AND LICENSE
     This software is copyright (c) 2014 by Kent Fredric

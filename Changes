@@ -1,5 +1,26 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
+1.001000 2014-09-04T21:25:40Z
+ [00 Minor]
+ - Internals changed.
+ - Tests redesigned.
+ - metadata
+
+ [Dependencies::Stats]
+ - Dependencies changed since 1.000002, see misc/*.deps* for details
+ - develop: +1 (suggests: ↑1)
+ - runtime: +1
+ - test: +1 -4 (recommends: ↑1)
+
+ [Internals]
+ - dump_config implemented in config_dumper
+
+ [Metadata]
+ - fix author = kentnl
+
+ [Tests]
+ - tests reimplemented in terms of dztest
+
 1.000002 2014-08-16T19:59:38Z
  [00 Trivial]
  - CPANDAY!
