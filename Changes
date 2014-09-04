@@ -1,6 +1,6 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
-1.001000 2014-09-04T21:24:15Z
+1.001000 2014-09-04T21:25:40Z
  [00 Minor]
  - Internals changed.
  - Tests redesigned.
