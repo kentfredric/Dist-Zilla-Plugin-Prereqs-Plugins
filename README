@@ -27,17 +27,6 @@ METHODS
 
         exclude
 
-  "get_plugin_module"
-        $instance->get_plugin_module( $plugin_instance );
-
-  "skip_prereq"
-        if ( $instance->skip_prereq( $plugin_instance ) ) {
-
-        }
-
-  "get_prereq_for"
-        my ( $module, $version ) = $instance->get_prereq_for( $plugin_instance );
-
   "register_prereqs"
     See "Dist::Zilla::Role::PrereqSource"
 
@@ -79,6 +68,12 @@ ATTRIBUTES
 
 PRIVATE ATTRIBUTES
   "_exclude_hash"
+  "_sequence"
+    This is the dark magic that makes this work.
+
+    This is a required attribute that is injected during
+    "plugin_from_config"
+
 PRIVATE METHODS
   "_build__exclude_hash"
 LIMITATIONS

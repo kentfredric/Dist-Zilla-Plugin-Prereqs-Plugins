@@ -89,6 +89,16 @@ has _exclude_hash => ( is => ro =>, isa => HashRef [Str], lazy => 1, builder => 
 
 
 
+has _sequence => ( is => ro =>, required => 1 );
+
+
+
+
+
+
+
+
+
 sub mvp_multivalue_args { return qw(exclude) }
 
 
@@ -98,44 +108,6 @@ sub mvp_multivalue_args { return qw(exclude) }
 sub _build__exclude_hash {
   my ( $self, ) = @_;
   return { map { ( $_ => 1 ) } @{ $self->exclude } };
-}
-
-
-
-
-
-
-
-sub get_plugin_module {
-  my ( undef, $plugin ) = @_;
-  return if not ref $plugin;
-  require Scalar::Util;
-  return Scalar::Util::blessed($plugin);
-}
-
-
-
-
-
-
-
-
-
-sub skip_prereq {
-  my ( $self, $plugin ) = @_;
-  return 1 if exists $self->_exclude_hash->{ $self->get_plugin_module($plugin) };
-  return;
-}
-
-
-
-
-
-
-
-sub get_prereq_for {
-  my ( $self, $plugin ) = @_;
-  return ( $self->get_plugin_module($plugin), 0 );
 }
 
 around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude ) );
@@ -152,13 +124,25 @@ sub register_prereqs {
   my $phase    = $self->phase;
   my $relation = $self->relation;
 
-  for my $plugin ( @{ $self->zilla->plugins } ) {
-    next if $self->skip_prereq($plugin);
-    my ( $name, $version ) = $self->get_prereq_for($plugin);
+  for my $section ( values %{ $self->_sequence->_sections } ) {
+    next if $section->name eq '_';
+    my $name = $section->package;
+    next if exists $self->_exclude_hash->{$name};
+    my $payload = $section->payload;
+    my $version = '0';
+    if ( exists $payload->{':version'} ) {
+      $version = $payload->{':version'};
+    }
     $zilla->register_prereqs( { phase => $phase, type => $relation }, $name, $version );
   }
   return $zilla->prereqs;
 }
+
+around plugin_from_config => sub {
+  my ( $orig, $plugin_class, $name, $arg, $own_section ) = @_;
+  $arg->{_sequence} = $own_section->sequence;
+  return $plugin_class->$orig( $name, $arg, $own_section );
+};
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -203,20 +187,6 @@ of how C<dist.ini> is parsed.
 The list of attributes that can be specified multiple times
 
     exclude
-
-=head2 C<get_plugin_module>
-
-    $instance->get_plugin_module( $plugin_instance );
-
-=head2 C<skip_prereq>
-
-    if ( $instance->skip_prereq( $plugin_instance ) ) {
-
-    }
-
-=head2 C<get_prereq_for>
-
-    my ( $module, $version ) = $instance->get_prereq_for( $plugin_instance );
 
 =head2 C<register_prereqs>
 
@@ -273,6 +243,12 @@ May Be specified multiple times.
 =head1 PRIVATE ATTRIBUTES
 
 =head2 C<_exclude_hash>
+
+=head2 C<_sequence>
+
+This is the dark magic that makes this work.
+
+This is a required attribute that is injected during C<plugin_from_config>
 
 =head1 PRIVATE METHODS
 
