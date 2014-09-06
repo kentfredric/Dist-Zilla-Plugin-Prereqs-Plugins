@@ -5,7 +5,7 @@ use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-our $VERSION = '1.001001';
+our $VERSION = '1.002000';
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
@@ -81,6 +81,16 @@ has exclude => ( is => ro =>, isa => ArrayRef [Str], lazy => 1, default => sub {
 
 has _exclude_hash => ( is => ro =>, isa => HashRef [Str], lazy => 1, builder => '_build__exclude_hash' );
 
+=p_attr C<_sequence>
+
+This is the dark magic that makes this work.
+
+This is a required attribute that is injected during C<plugin_from_config>
+
+=cut
+
+has _sequence => ( is => ro =>, required => 1 );
+
 =method C<mvp_multivalue_args>
 
 The list of attributes that can be specified multiple times
@@ -100,44 +110,6 @@ sub _build__exclude_hash {
   return { map { ( $_ => 1 ) } @{ $self->exclude } };
 }
 
-=method C<get_plugin_module>
-
-    $instance->get_plugin_module( $plugin_instance );
-
-=cut
-
-sub get_plugin_module {
-  my ( undef, $plugin ) = @_;
-  return if not ref $plugin;
-  require Scalar::Util;
-  return Scalar::Util::blessed($plugin);
-}
-
-=method C<skip_prereq>
-
-    if ( $instance->skip_prereq( $plugin_instance ) ) {
-
-    }
-
-=cut
-
-sub skip_prereq {
-  my ( $self, $plugin ) = @_;
-  return 1 if exists $self->_exclude_hash->{ $self->get_plugin_module($plugin) };
-  return;
-}
-
-=method C<get_prereq_for>
-
-    my ( $module, $version ) = $instance->get_prereq_for( $plugin_instance );
-
-=cut
-
-sub get_prereq_for {
-  my ( $self, $plugin ) = @_;
-  return ( $self->get_plugin_module($plugin), 0 );
-}
-
 around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude ) );
 
 =method C<register_prereqs>
@@ -152,13 +124,27 @@ sub register_prereqs {
   my $phase    = $self->phase;
   my $relation = $self->relation;
 
-  for my $plugin ( @{ $self->zilla->plugins } ) {
-    next if $self->skip_prereq($plugin);
-    my ( $name, $version ) = $self->get_prereq_for($plugin);
-    $zilla->register_prereqs( { phase => $phase, type => $relation }, $name, $version );
+  ## no critic (Subroutines::ProtectPrivateSubs)
+  for my $section ( values %{ $self->_sequence->_sections } ) {
+
+    next if q[_] eq $section->name;
+    my $package = $section->package;
+    next if exists $self->_exclude_hash->{$package};
+    my $payload = $section->payload;
+    my $version = '0';
+    if ( exists $payload->{':version'} ) {
+      $version = $payload->{':version'};
+    }
+    $zilla->register_prereqs( { phase => $phase, type => $relation }, $package, $version );
   }
   return $zilla->prereqs;
 }
+
+around plugin_from_config => sub {
+  my ( $orig, $plugin_class, $name, $arg, $own_section ) = @_;
+  $arg->{_sequence} = $own_section->sequence;
+  return $plugin_class->$orig( $name, $arg, $own_section );
+};
 
 __PACKAGE__->meta->make_immutable;
 no Moose;

@@ -6,14 +6,15 @@ use Dist::Zilla::Util::Test::KENTNL 1.003001 qw( dztest );
 use Test::DZil qw( simple_ini );
 
 my $test = dztest();
-$test->add_file( 'dist.ini', simple_ini( ['Prereqs::Plugins'], ['GatherDir'], ) );
+$test->add_file( 'dist.ini',
+  simple_ini( [ 'Prereqs::Plugins', { ':version' => '1' } ], [ 'GatherDir', { ':version' => '2' } ], ) );
 $test->build_ok;
 $test->meta_path_deeply(
   '/prereqs/develop/requires/',
   [
     {
-      'Dist::Zilla::Plugin::GatherDir'        => '0',
-      'Dist::Zilla::Plugin::Prereqs::Plugins' => '0',
+      'Dist::Zilla::Plugin::GatherDir'        => '2',
+      'Dist::Zilla::Plugin::Prereqs::Plugins' => '1',
     }
   ]
 );
