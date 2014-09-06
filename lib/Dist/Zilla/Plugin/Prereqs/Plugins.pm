@@ -5,7 +5,7 @@ use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-our $VERSION = '1.002000';
+our $VERSION = '1.002000'; # TRIAL
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
