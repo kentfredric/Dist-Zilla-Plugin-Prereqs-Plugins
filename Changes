@@ -1,7 +1,8 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
-1.002000 2014-09-06T10:41:31Z
+1.002000 2014-09-06T11:35:23Z
  [00 Major]
+ - WARNING: EXPERIMENTAL
  - Method of action moved deeper to Dzil internals
  - can now divine the value of :version passed anywhere in dist.ini or @Bundles
  - however, due to switching to the DZil Section Sequence assembly, plugins that modify $zilla->plugins directly willl
