@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
 {{$NEXT}}
+
+1.002000 2014-09-06T11:37:39Z
  [00 Major]
  - WARNING: EXPERIMENTAL
  - Method of action moved deeper to Dzil internals
