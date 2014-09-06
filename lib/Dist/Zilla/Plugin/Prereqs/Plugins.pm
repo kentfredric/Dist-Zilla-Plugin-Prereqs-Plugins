@@ -5,7 +5,7 @@ use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-our $VERSION = '1.002000'; # TRIAL
+our $VERSION = '1.002000';
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
@@ -124,9 +124,10 @@ sub register_prereqs {
   my $phase    = $self->phase;
   my $relation = $self->relation;
 
+  ## no critic (Subroutines::ProtectPrivateSubs)
   for my $section ( values %{ $self->_sequence->_sections } ) {
 
-    next if $section->name eq '_';
+    next if q[_] eq $section->name;
     my $package = $section->package;
     next if exists $self->_exclude_hash->{$package};
     my $payload = $section->payload;
