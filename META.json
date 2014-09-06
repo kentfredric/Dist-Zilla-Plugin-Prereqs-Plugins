@@ -113,7 +113,7 @@
    "provides" : {
       "Dist::Zilla::Plugin::Prereqs::Plugins" : {
          "file" : "lib/Dist/Zilla/Plugin/Prereqs/Plugins.pm",
-         "version" : "1.002000"
+         "version" : "1.002001"
       }
    },
    "release_status" : "testing",
@@ -128,7 +128,7 @@
          "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins"
       }
    },
-   "version" : "1.002000",
+   "version" : "1.002001",
    "x_BuiltWith" : {
       "modules" : {
          "CPAN::Meta" : "2.142060",
@@ -651,7 +651,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "1.002000-source",
+                  "tag" : "1.002001-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -722,7 +722,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "1.002000",
+                  "tag" : "1.002001",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
