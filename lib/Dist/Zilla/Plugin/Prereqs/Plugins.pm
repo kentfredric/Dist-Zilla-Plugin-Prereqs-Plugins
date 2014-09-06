@@ -125,15 +125,16 @@ sub register_prereqs {
   my $relation = $self->relation;
 
   for my $section ( values %{ $self->_sequence->_sections } ) {
+
     next if $section->name eq '_';
-    my $name = $section->package;
-    next if exists $self->_exclude_hash->{$name};
+    my $package = $section->package;
+    next if exists $self->_exclude_hash->{$package};
     my $payload = $section->payload;
     my $version = '0';
     if ( exists $payload->{':version'} ) {
       $version = $payload->{':version'};
     }
-    $zilla->register_prereqs( { phase => $phase, type => $relation }, $name, $version );
+    $zilla->register_prereqs( { phase => $phase, type => $relation }, $package, $version );
   }
   return $zilla->prereqs;
 }
