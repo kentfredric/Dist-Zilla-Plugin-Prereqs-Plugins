@@ -79,7 +79,7 @@
          },
          "suggests" : {
             "Dist::Zilla::App::Command::bakeini" : "0.001002",
-            "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.020003"
+            "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.020005"
          }
       },
       "runtime" : {
@@ -146,7 +146,7 @@
          "Dist::Zilla::Plugin::Git::CommitBuild" : "2.024",
          "Dist::Zilla::Plugin::Git::Contributors" : "0.007",
          "Dist::Zilla::Plugin::Git::GatherDir" : "2.024",
-         "Dist::Zilla::Plugin::Git::NextRelease" : "0.003000",
+         "Dist::Zilla::Plugin::Git::NextRelease" : "0.004000",
          "Dist::Zilla::Plugin::Git::Tag" : "2.024",
          "Dist::Zilla::Plugin::GithubMeta" : "0.46",
          "Dist::Zilla::Plugin::License" : "5.020",
@@ -179,7 +179,7 @@
          "Dist::Zilla::Plugin::TestRelease" : "5.020",
          "Dist::Zilla::Plugin::Twitter" : "0.026",
          "Dist::Zilla::Plugin::UploadToCPAN" : "5.020",
-         "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.020003",
+         "Dist::Zilla::PluginBundle::Author::KENTNL" : "2.020005",
          "Dist::Zilla::Role::PluginBundle" : "5.020",
          "Dist::Zilla::Role::PrereqSource" : "5.020",
          "Dist::Zilla::Util::ConfigDumper" : "0.003006",
@@ -666,7 +666,7 @@
          {
             "class" : "Dist::Zilla::Plugin::Git::NextRelease",
             "name" : "@Author::KENTNL/Git::NextRelease",
-            "version" : "0.003000"
+            "version" : "0.004000"
          },
          {
             "class" : "Dist::Zilla::Plugin::BumpVersionAfterRelease",
