@@ -13,8 +13,12 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moose qw( with has around );
 use Dist::Zilla::Util::ConfigDumper qw( config_dumper );
+use Dist::Zilla::Util;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
-
+use Dist::Zilla::Util::BundleInfo;
+use Dist::Zilla::Util::ExpandINI::Reader;
+use Module::Runtime qw( require_module );
+use Path::Tiny qw( path );
 with 'Dist::Zilla::Role::PrereqSource';
 
 
@@ -89,16 +93,6 @@ has _exclude_hash => ( is => ro =>, isa => HashRef [Str], lazy => 1, builder => 
 
 
 
-has _sequence => ( is => ro =>, required => 1 );
-
-
-
-
-
-
-
-
-
 sub mvp_multivalue_args { return qw(exclude) }
 
 
@@ -112,6 +106,20 @@ sub _build__exclude_hash {
 
 around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude ) );
 
+sub _extract_versions {
+  my ( $section, ) = @_;
+  return unless $section->{lines};
+  my @entries = @{ $section->{lines} };
+  my (@versions);
+  while (@entries) {
+    my $key = shift @entries;
+    my $value = shift @entries if @entries;
+    next unless $key eq ':version';
+    push @versions, $value;
+  }
+  return @versions;
+}
+
 
 
 
@@ -124,27 +132,67 @@ sub register_prereqs {
   my $phase    = $self->phase;
   my $relation = $self->relation;
 
-  ## no critic (Subroutines::ProtectPrivateSubs)
-  for my $section ( values %{ $self->_sequence->_sections } ) {
+  my $reader = Dist::Zilla::Util::ExpandINI::Reader->new();
+  my $ini    = path( $self->zilla->root )->child('dist.ini');
+  if ( not $ini->exists ) {
+    $self->log_fatal(
+      "Sorry, Prereqs::Plugins only works on dist.ini files directly due to :version now being excluded from the package stash");
+    return;
+  }
+  my (@sections) = @{ $reader->read_file("$ini") };
+  while (@sections) {
+    my ($section)  = shift @sections;
+    my (@versions) = _extract_versions($section);
 
-    next if q[_] eq $section->name;
-    my $package = $section->package;
-    next if exists $self->_exclude_hash->{$package};
-    my $payload = $section->payload;
-    my $version = '0';
-    if ( exists $payload->{':version'} ) {
-      $version = $payload->{':version'};
+    # Special case for Dzil
+    if ( '_' eq ( $section->{name} || q[] ) ) {
+
+      # No versions = no explicit dep
+      next unless scalar @versions;
+      for my $version (@versions) {
+        $zilla->register_prereqs( { phase => $phase, type => $relation }, "Dist::Zilla", $version );
+      }
+      next;
     }
-    $zilla->register_prereqs( { phase => $phase, type => $relation }, $package, $version );
+    next unless $section->{package};
+    my $package_expanded = Dist::Zilla::Util->expand_config_package_name( $section->{package} );
+    next if exists $self->_exclude_hash->{$package_expanded};
+
+    # Standard plugin.
+    if ( $section->{package} !~ /\A\@/msx ) {
+
+      # Register all plugins as 0 first.
+      $zilla->register_prereqs( { phase => $phase, type => $relation }, $package_expanded, 0 );
+      next unless scalar @versions;
+      for my $version (@versions) {
+        $zilla->register_prereqs( { phase => $phase, type => $relation }, $package_expanded, $version );
+      }
+      next;
+    }
+
+    # Bundle
+    # TODO: Maybe register the bundle itself?
+    # $self->register_prereqs( { phase => $phase, type => $relation }, $section->{package}, 0 );
+
+    # Handle bundle
+    my $bundle = Dist::Zilla::Util::BundleInfo->new(
+      bundle_name    => $section->{package},
+      bundle_payload => $section->{lines},
+    );
+
+    for my $plugin ( $bundle->plugins ) {
+      next if exists $self->_exclude_hash->{ $plugin->module };
+      $zilla->register_prereqs( { phase => $phase, type => $relation }, $plugin->module, 0 );
+      require_module( $plugin->module );
+      my (@versions) = _extract_versions( { lines => [ $plugin->payload_list ] } );
+      next unless @versions;
+      for my $version (@versions) {
+        $zilla->register_prereqs( { phase => $phase, type => $relation }, $plugin->module, $version );
+      }
+    }
   }
   return $zilla->prereqs;
 }
-
-around plugin_from_config => sub {
-  my ( $orig, $plugin_class, $name, $arg, $own_section ) = @_;
-  $arg->{_sequence} = $own_section->sequence;
-  return $plugin_class->$orig( $name, $arg, $own_section );
-};
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -245,12 +293,6 @@ May Be specified multiple times.
 =head1 PRIVATE ATTRIBUTES
 
 =head2 C<_exclude_hash>
-
-=head2 C<_sequence>
-
-This is the dark magic that makes this work.
-
-This is a required attribute that is injected during C<plugin_from_config>
 
 =head1 PRIVATE METHODS
 
