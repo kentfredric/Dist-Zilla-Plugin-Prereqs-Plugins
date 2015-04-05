@@ -1,98 +1,34 @@
-NAME
-    Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins
-    presently in use as prerequisites.
+Dist::Zilla::Plugin::Prereqs::Plugins
 
-VERSION
-    version 1.002002
+This is mostly because I am lazy, and the lengthy list of hand-updated
+dependencies on my @Author:: bundle started to get overwhelming, and I'd
+periodically miss something.
 
-SYNOPSIS
-        [Prereqs::Plugins]
-        ; all plugins are now develop.requires deps
+This module is kinda "AutoPrereqs"y, but in ways that I can't imagine
+being plausible with a generic "AutoPrereqs" tool, at least, not without
+requiring some nasty re-implementation of how "dist.ini" is parsed.
 
-        [Prereqs::Plugins]
-        phase = runtime    ; all plugins are now runtime.requires deps
+INSTALLATION
 
-DESCRIPTION
-    This is mostly because I am lazy, and the lengthy list of hand-updated
-    dependencies on my @Author:: bundle started to get overwhelming, and I'd
-    periodically miss something.
+This is a Perl module distribution. It should be installed with whichever
+tool you use to manage your installation of Perl, e.g. any of
 
-    This module is kinda "AutoPrereqs"y, but in ways that I can't imagine
-    being plausible with a generic "AutoPrereqs" tool, at least, not without
-    requiring some nasty re-implementation of how "dist.ini" is parsed.
+  cpanm .
+  cpan  .
+  cpanp -i .
 
-METHODS
-  "mvp_multivalue_args"
-    The list of attributes that can be specified multiple times
+Consult http://www.cpan.org/modules/INSTALL.html for further instruction.
+Should you wish to install this module manually, the procedure is
 
-        exclude
-
-  "register_prereqs"
-    See "Dist::Zilla::Role::PrereqSource"
-
-ATTRIBUTES
-  "phase"
-    The target installation phase to inject into:
-
-    *   "runtime"
-
-    *   "configure"
-
-    *   "build"
-
-    *   "test"
-
-    *   "develop"
-
-  "relation"
-    The type of dependency relation to create:
-
-    *   "requires"
-
-    *   "recommends"
-
-    *   "suggests"
-
-    *   "conflicts"
-
-        Though think incredibly hard before using this last one ;)
-
-  "exclude"
-    Specify anything you want excluded here.
-
-    May Be specified multiple times.
-
-        [Prereqs::Plugins]
-        exclude = Some::Module::Thingy
-        exclude = Some::Other::Module::Thingy
-
-PRIVATE ATTRIBUTES
-  "_exclude_hash"
-  "_sequence"
-    This is the dark magic that makes this work.
-
-    This is a required attribute that is injected during
-    "plugin_from_config"
-
-PRIVATE METHODS
-  "_build__exclude_hash"
-LIMITATIONS
-    *   This module will NOT report @Bundles as dependencies at present.
-
-    *   This module will NOT *necessarily* include ALL dependencies, but is
-        only intended to include the majority of them.
-
-        Some plugins, such as my own "Bootstrap::lib" don't add themselves
-        to the "dzil" "->plugins()" list, and as such, it will be invisible
-        to this module.
-
-AUTHOR
-    Kent Fredric <kentnl@cpan.org>
+  perl Makefile.PL
+  make
+  make test
+  make install
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2014 by Kent Fredric
-    <kentfredric@gmail.com>.
 
-    This is free software; you can redistribute it and/or modify it under
-    the same terms as the Perl 5 programming language system itself.
+This software is copyright (c) 2015 by Kent Fredric
+<kentfredric@gmail.com>.
 
+This is free software; you can redistribute it and/or modify it under
+the same terms as the Perl 5 programming language system itself.
