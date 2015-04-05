@@ -25,6 +25,7 @@
       },
       "develop" : {
          "recommends" : {
+            "Path::Tiny" : "0.058",
             "Test::More" : "0.99"
          },
          "requires" : {
@@ -78,6 +79,10 @@
             "Dist::Zilla::Plugin::TestRelease" : "0",
             "Dist::Zilla::Plugin::Twitter" : "0",
             "Dist::Zilla::Plugin::UploadToCPAN" : "0",
+            "Dist::Zilla::Util::BundleInfo" : "0",
+            "Dist::Zilla::Util::ExpandINI" : "0",
+            "Module::Runtime" : "0",
+            "Path::Tiny" : "0",
             "Pod::Coverage::TrustPod" : "0",
             "Test::CPAN::Changes" : "0.19",
             "Test::CPAN::Meta" : "0",

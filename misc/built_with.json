@@ -58,6 +58,7 @@
       "Dist::Zilla::Util" : "5.034",
       "Dist::Zilla::Util::BundleInfo" : "1.001003",
       "Dist::Zilla::Util::ConfigDumper" : "0.003006",
+      "Dist::Zilla::Util::ExpandINI" : "0.003000",
       "Dist::Zilla::Util::ExpandINI::Reader" : "0.003000",
       "Dist::Zilla::Util::Test::KENTNL" : "1.005000",
       "ExtUtils::MakeMaker" : "7.04",

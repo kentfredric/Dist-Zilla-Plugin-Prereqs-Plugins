@@ -5,6 +5,12 @@ author           = Kent Fredric <kentnl@cpan.org>
 license          = Perl_5
 copyright_holder = Kent Fredric <kentfredric@gmail.com>
 
+; Required to bootstrap
+; authordep Dist::Zilla::Util::BundleInfo
+; authordep Dist::Zilla::Util::ExpandINI
+; authordep Path::Tiny
+; authordep Module::Runtime
+
 ; Uncomment this to bootstrap via self
 [Bootstrap::lib]
 try_built = 1
