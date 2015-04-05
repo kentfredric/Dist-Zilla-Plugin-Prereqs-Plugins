@@ -112,8 +112,8 @@ sub _register_plugin_prereq {
   $self->zilla->register_prereqs( { phase => $self->phase, type => $self->relation }, $package, 0 );
   return unless @{ $lines || [] };
   while ( @{$lines} ) {
-    my $key   = shift @entries;
-    my $value = shift @entries;
+    my $key   = shift @{$lines};
+    my $value = shift @{$lines};
     next unless q[:version] eq $key;
     $self->zilla->register_prereqs( { phase => $self->phase, type => $self->relation }, $package, $value );
   }
@@ -127,7 +127,7 @@ sub _register_plugin_prereq {
 
 
 sub register_prereqs {
-  my ($self)   = @_;
+  my ($self) = @_;
   my $reader = Dist::Zilla::Util::ExpandINI::Reader->new();
   my $ini    = path( $self->zilla->root )->child('dist.ini');
   if ( not $ini->exists ) {
@@ -165,7 +165,7 @@ sub register_prereqs {
       $self->_register_plugin_prereq( $plugin->module, [ $plugin->payload_list ] );
     }
   }
-  return $zilla->prereqs;
+  return $self->zilla->prereqs;
 }
 
 __PACKAGE__->meta->make_immutable;

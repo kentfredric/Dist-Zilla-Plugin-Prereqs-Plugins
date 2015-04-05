@@ -26,6 +26,7 @@ $test->meta_path_deeply(
   '/prereqs/develop/requires/',
   [
     {
+      'Dist::Zilla'                           => '0',
       'Dist::Zilla::Plugin::GatherDir'        => '2',
       'Dist::Zilla::Plugin::Prereqs::Plugins' => '1',
     }
