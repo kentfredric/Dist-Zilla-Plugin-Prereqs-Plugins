@@ -156,7 +156,6 @@
             "config" : {
                "Dist::Zilla::Role::Bootstrap" : {
                   "distname" : "Dist-Zilla-Plugin-Prereqs-Plugins",
-                  "fallback" : "1",
                   "try_built" : "1"
                }
             },

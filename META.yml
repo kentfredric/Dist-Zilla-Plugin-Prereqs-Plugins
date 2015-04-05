@@ -51,7 +51,6 @@ x_Dist_Zilla:
       config:
         Dist::Zilla::Role::Bootstrap:
           distname: Dist-Zilla-Plugin-Prereqs-Plugins
-          fallback: '1'
           try_built: '1'
       name: Bootstrap::lib
       version: '1.001000'
