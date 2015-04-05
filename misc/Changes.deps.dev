@@ -1,7 +1,10 @@
 This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and OPTIONAL )
 
-1.003000
+1.003001
+
+1.003000 2015-04-05T16:21:31Z
  [Added / develop recommends]
+ - Path::Tiny 0.058
  - Test::More 0.99
 
  [Added / develop requires]
@@ -11,6 +14,10 @@ This file contains changes to DEVELOPMENT dependencies only ( both REQUIRED and 
  - Dist::Zilla::Plugin::Prereqs::Upgrade
  - Dist::Zilla::Plugin::Readme::Brief
  - Dist::Zilla::Plugin::Test::EOL
+ - Dist::Zilla::Util::BundleInfo
+ - Dist::Zilla::Util::ExpandINI
+ - Module::Runtime
+ - Path::Tiny
  - Test::EOL
  - Test::More 0.88
 
