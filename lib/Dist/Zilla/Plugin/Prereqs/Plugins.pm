@@ -128,9 +128,6 @@ sub _register_plugin_prereq {
 
 sub register_prereqs {
   my ($self)   = @_;
-  my $phase    = $self->phase;
-  my $relation = $self->relation;
-
   my $reader = Dist::Zilla::Util::ExpandINI::Reader->new();
   my $ini    = path( $self->zilla->root )->child('dist.ini');
   if ( not $ini->exists ) {
@@ -156,7 +153,6 @@ sub register_prereqs {
 
     # Bundle
     # TODO: Maybe register the bundle itself?
-    # $self->register_prereqs( { phase => $phase, type => $relation }, $section->{package}, 0 );
     next if exists $self->_exclude_hash->{$package_expanded};
 
     # Handle bundle
