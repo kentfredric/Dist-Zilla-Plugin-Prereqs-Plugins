@@ -58,6 +58,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Bootstrap:
           distname: Dist-Zilla-Plugin-Prereqs-Plugins
           try_built: '1'
+          try_built_method: mtime
       name: Bootstrap::lib
       version: '1.001000'
     -
@@ -525,7 +526,7 @@ x_Dist_Zilla:
           phase: develop
           relation: requires
       name: Prereqs::Plugins
-      version: '1.002002'
+      version: '1.003000'
     -
       class: Dist::Zilla::Plugin::Prereqs
       config:
@@ -573,7 +574,7 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: '0'
+      is_trial: '1'
     version: '5.034'
 x_authority: cpan:KENTNL
 x_contributors:

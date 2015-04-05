@@ -136,7 +136,7 @@
          "version" : "1.003000"
       }
    },
-   "release_status" : "stable",
+   "release_status" : "testing",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins/issues"
@@ -162,7 +162,8 @@
             "config" : {
                "Dist::Zilla::Role::Bootstrap" : {
                   "distname" : "Dist-Zilla-Plugin-Prereqs-Plugins",
-                  "try_built" : "1"
+                  "try_built" : "1",
+                  "try_built_method" : "mtime"
                }
             },
             "name" : "Bootstrap::lib",
@@ -774,7 +775,7 @@
                }
             },
             "name" : "Prereqs::Plugins",
-            "version" : "1.002002"
+            "version" : "1.003000"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
@@ -836,7 +837,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : "0"
+            "is_trial" : "1"
          },
          "version" : "5.034"
       }
