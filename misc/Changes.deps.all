@@ -1,6 +1,6 @@
 This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL dependencies for all phases (configure/build/runtime/test/develop)
 
-1.002002
+1.003000
  [Added / configure requires]
  - perl 5.008
 
@@ -19,6 +19,14 @@ This file contains ALL changes in dependencies in both REQUIRED / OPTIONAL depen
 
  [Added / runtime recommends]
  - Moose 2.000
+ - Path::Tiny 0.058
+
+ [Added / runtime requires]
+ - Dist::Zilla::Util
+ - Dist::Zilla::Util::BundleInfo
+ - Dist::Zilla::Util::ExpandINI::Reader
+ - Module::Runtime
+ - Path::Tiny
 
  [Added / test requires]
  - perl 5.008

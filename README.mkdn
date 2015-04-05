@@ -4,7 +4,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 # VERSION
 
-version 1.002002
+version 1.003000
 
 # SYNOPSIS
 
@@ -72,12 +72,6 @@ May Be specified multiple times.
 
 ## `_exclude_hash`
 
-## `_sequence`
-
-This is the dark magic that makes this work.
-
-This is a required attribute that is injected during `plugin_from_config`
-
 # PRIVATE METHODS
 
 ## `_build__exclude_hash`
@@ -86,8 +80,7 @@ This is a required attribute that is injected during `plugin_from_config`
 
 - This module will **NOT** report `@Bundles` as dependencies at present.
 - This module will **NOT** _necessarily_ include **ALL** dependencies, but is only intended to include the majority of them.
-
-    Some plugins, such as my own `Bootstrap::lib` don't add themselves to the `dzil` `->plugins()` list, and as such, it will be invisible to this module.
+- This module will not report _injected_ dependencies, only dependencies that can be discovered from the parse tree directly, or from the return values of any indicated bundles.
 
 # AUTHOR
 

@@ -1,8 +1,15 @@
 This file contains changes in REQUIRED dependencies for standard CPAN phases (configure/build/runtime/test)
 
-1.002002
+1.003000
  [Added / configure requires]
  - perl 5.008
+
+ [Added / runtime requires]
+ - Dist::Zilla::Util
+ - Dist::Zilla::Util::BundleInfo
+ - Dist::Zilla::Util::ExpandINI::Reader
+ - Module::Runtime
+ - Path::Tiny
 
  [Added / test requires]
  - perl 5.008
