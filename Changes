@@ -1,6 +1,12 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
 {{$NEXT}}
+ [Dependencies::Stats]
+ - Dependencies changed since 1.002001, see misc/*.deps* for details
+ - configure: +1 (recommends: ↑1)
+ - develop: +8 ↑3 -2 (recommends: +1, suggests: ↑2)
+ - runtime: (recommends: +1)
+ - test: +1 (recommends: ↑1 ↓1)
 
 1.002001 2014-10-05T10:24:47Z
  [00 Minor]
