@@ -279,7 +279,7 @@ May Be specified multiple times.
 
 =item * This module will B<NOT> I<necessarily> include B<ALL> dependencies, but is only intended to include the majority of them.
 
-=item * This module will not report I<injected> deps, only deps that can be discovered from the parse tree directly, or from the return values of any indicated bundles.
+=item * This module will not report I<injected> dependencies, only deps that can be discovered from the parse tree directly, or from the return values of any indicated bundles.
 
 =back
 
