@@ -9,10 +9,10 @@ build_requires:
   File::Spec: '0'
   Test::DZil: '0'
   Test::More: '0.89'
-  perl: '5.008'
+  perl: '5.006'
 configure_requires:
   ExtUtils::MakeMaker: '0'
-  perl: '5.008'
+  perl: '5.006'
 dynamic_config: 0
 generated_by: 'Dist::Zilla version 5.034, CPAN::Meta::Converter version 2.150001'
 license: perl
@@ -23,7 +23,7 @@ name: Dist-Zilla-Plugin-Prereqs-Plugins
 provides:
   Dist::Zilla::Plugin::Prereqs::Plugins:
     file: lib/Dist/Zilla/Plugin/Prereqs/Plugins.pm
-    version: '1.003000'
+    version: '1.002002'
 recommends:
   Moose: '2.000'
   Path::Tiny: '0.058'
@@ -37,15 +37,14 @@ requires:
   Moose: '0'
   MooseX::Types::Moose: '0'
   Path::Tiny: '0'
-  perl: '5.008'
+  perl: '5.006'
   strict: '0'
-  utf8: '0'
   warnings: '0'
 resources:
   bugtracker: https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins/issues
   homepage: https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins
   repository: https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins.git
-version: '1.003000'
+version: '1.002002'
 x_BuiltWith:
   external_file: misc/built_with.json
 x_Dist_Zilla:
@@ -409,7 +408,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: ~
           signed: 0
-          tag: 1.003000-source
+          tag: 1.002002-source
           tag_format: '%v-source'
           tag_message: v%v
           time_zone: local
@@ -463,7 +462,7 @@ x_Dist_Zilla:
         Dist::Zilla::Plugin::Git::Tag:
           branch: releases
           signed: 0
-          tag: '1.003000'
+          tag: '1.002002'
           tag_format: '%v'
           tag_message: v%v
           time_zone: local
@@ -574,7 +573,7 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: '1'
+      is_trial: '0'
     version: '5.034'
 x_authority: cpan:KENTNL
 x_contributors:

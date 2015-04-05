@@ -1,11 +1,9 @@
-use 5.008;    # pragma utf8
 use strict;
 use warnings;
-use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-our $VERSION = '1.003000'; # TRIAL
+our $VERSION = '1.002002';
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
@@ -185,7 +183,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 =head1 VERSION
 
-version 1.003000
+version 1.002002
 
 =head1 SYNOPSIS
 
@@ -280,7 +278,7 @@ May Be specified multiple times.
 
 =item * This module will B<NOT> I<necessarily> include B<ALL> dependencies, but is only intended to include the majority of them.
 
-Some plugins, such as my own C<Bootstrap::lib> don't add themselves to the C<dzil> C<< ->plugins() >> list, and as such, it will be invisible to this module.
+=item * This module will not report I<injected> deps, only deps that can be discovered from the parse tree directly, or from the return values of any indicated bundles.
 
 =back
 
