@@ -779,7 +779,7 @@
                }
             },
             "name" : "Prereqs::Plugins",
-            "version" : "1.003001"
+            "version" : "1.003002"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
