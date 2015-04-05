@@ -112,9 +112,9 @@ sub _extract_versions {
   my @entries = @{ $section->{lines} };
   my (@versions);
   while (@entries) {
-    my $key = shift @entries;
-    my $value = shift @entries if @entries;
-    next unless $key eq ':version';
+    my $key   = shift @entries;
+    my $value = shift @entries;
+    next unless q[:version] eq $key;
     push @versions, $value;
   }
   return @versions;
@@ -135,8 +135,7 @@ sub register_prereqs {
   my $reader = Dist::Zilla::Util::ExpandINI::Reader->new();
   my $ini    = path( $self->zilla->root )->child('dist.ini');
   if ( not $ini->exists ) {
-    $self->log_fatal(
-      "Sorry, Prereqs::Plugins only works on dist.ini files directly due to :version now being excluded from the package stash");
+    $self->log_fatal(q[Prereqs::Plugins only works on dist.ini due to :version hidden since 5.032]);
     return;
   }
   my (@sections) = @{ $reader->read_file("$ini") };
@@ -150,7 +149,7 @@ sub register_prereqs {
       # No versions = no explicit dep
       next unless scalar @versions;
       for my $version (@versions) {
-        $zilla->register_prereqs( { phase => $phase, type => $relation }, "Dist::Zilla", $version );
+        $zilla->register_prereqs( { phase => $phase, type => $relation }, q[Dist::Zilla], $version );
       }
       next;
     }
