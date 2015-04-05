@@ -1,6 +1,8 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
 {{$NEXT}}
+
+1.003001 2015-04-05T16:37:33Z ebbbba8
  [Trivial]
  - Just re-releasing because somehow I fubared the dependency diff. Script adjusted to avoid this issue in future.
 
