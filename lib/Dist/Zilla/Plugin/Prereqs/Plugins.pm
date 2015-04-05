@@ -106,18 +106,18 @@ sub _build__exclude_hash {
 
 around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude ) );
 
-sub _extract_versions {
-  my ( $section, ) = @_;
-  return unless $section->{lines};
-  my @entries = @{ $section->{lines} };
-  my (@versions);
-  while (@entries) {
+sub _register_plugin_prereq {
+  my ( $self, $package, $lines ) = @_;
+  return if exists $self->_exclude_hash->{$package};
+  $self->zilla->register_prereqs( { phase => $self->phase, type => $self->relation }, $package, 0 );
+  return unless @{ $lines || [] };
+  while ( @{$lines} ) {
     my $key   = shift @entries;
     my $value = shift @entries;
     next unless q[:version] eq $key;
-    push @versions, $value;
+    $self->zilla->register_prereqs( { phase => $self->phase, type => $self->relation }, $package, $value );
   }
-  return @versions;
+  return;
 }
 
 
@@ -128,7 +128,6 @@ sub _extract_versions {
 
 sub register_prereqs {
   my ($self)   = @_;
-  my $zilla    = $self->zilla;
   my $phase    = $self->phase;
   my $relation = $self->relation;
 
@@ -140,38 +139,25 @@ sub register_prereqs {
   }
   my (@sections) = @{ $reader->read_file("$ini") };
   while (@sections) {
-    my ($section)  = shift @sections;
-    my (@versions) = _extract_versions($section);
+    my ($section) = shift @sections;
 
     # Special case for Dzil
     if ( '_' eq ( $section->{name} || q[] ) ) {
-
-      # No versions = no explicit dep
-      next unless scalar @versions;
-      for my $version (@versions) {
-        $zilla->register_prereqs( { phase => $phase, type => $relation }, q[Dist::Zilla], $version );
-      }
+      $self->_register_plugin_prereq( q[Dist::Zilla], $section->{lines} );
       next;
     }
-    next unless $section->{package};
     my $package_expanded = Dist::Zilla::Util->expand_config_package_name( $section->{package} );
-    next if exists $self->_exclude_hash->{$package_expanded};
 
     # Standard plugin.
     if ( $section->{package} !~ /\A\@/msx ) {
-
-      # Register all plugins as 0 first.
-      $zilla->register_prereqs( { phase => $phase, type => $relation }, $package_expanded, 0 );
-      next unless scalar @versions;
-      for my $version (@versions) {
-        $zilla->register_prereqs( { phase => $phase, type => $relation }, $package_expanded, $version );
-      }
+      $self->_register_plugin_prereq( $package_expanded, $section->{lines} );
       next;
     }
 
     # Bundle
     # TODO: Maybe register the bundle itself?
     # $self->register_prereqs( { phase => $phase, type => $relation }, $section->{package}, 0 );
+    next if exists $self->_exclude_hash->{$package_expanded};
 
     # Handle bundle
     my $bundle = Dist::Zilla::Util::BundleInfo->new(
@@ -180,14 +166,7 @@ sub register_prereqs {
     );
 
     for my $plugin ( $bundle->plugins ) {
-      next if exists $self->_exclude_hash->{ $plugin->module };
-      $zilla->register_prereqs( { phase => $phase, type => $relation }, $plugin->module, 0 );
-      require_module( $plugin->module );
-      my (@versions) = _extract_versions( { lines => [ $plugin->payload_list ] } );
-      next unless @versions;
-      for my $version (@versions) {
-        $zilla->register_prereqs( { phase => $phase, type => $relation }, $plugin->module, $version );
-      }
+      $self->_register_plugin_prereq( $plugin->module, [ $plugin->payload_list ] );
     }
   }
   return $zilla->prereqs;
