@@ -1,11 +1,10 @@
-use 5.008;    # pragma utf8
+use 5.006;
 use strict;
 use warnings;
-use utf8;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-our $VERSION = '1.002001';
+our $VERSION = '1.003000'; # TRIAL
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
@@ -13,8 +12,12 @@ our $AUTHORITY = 'cpan:KENTNL'; # AUTHORITY
 
 use Moose qw( with has around );
 use Dist::Zilla::Util::ConfigDumper qw( config_dumper );
+use Dist::Zilla::Util;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
-
+use Dist::Zilla::Util::BundleInfo;
+use Dist::Zilla::Util::ExpandINI::Reader;
+use Module::Runtime qw( require_module );
+use Path::Tiny qw( path );
 with 'Dist::Zilla::Role::PrereqSource';
 
 
@@ -89,16 +92,6 @@ has _exclude_hash => ( is => ro =>, isa => HashRef [Str], lazy => 1, builder => 
 
 
 
-has _sequence => ( is => ro =>, required => 1 );
-
-
-
-
-
-
-
-
-
 sub mvp_multivalue_args { return qw(exclude) }
 
 
@@ -112,6 +105,20 @@ sub _build__exclude_hash {
 
 around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude ) );
 
+sub _register_plugin_prereq {
+  my ( $self, $package, $lines ) = @_;
+  return if exists $self->_exclude_hash->{$package};
+  $self->zilla->register_prereqs( { phase => $self->phase, type => $self->relation }, $package, 0 );
+  return unless @{ $lines || [] };
+  while ( @{$lines} ) {
+    my $key   = shift @{$lines};
+    my $value = shift @{$lines};
+    next unless q[:version] eq $key;
+    $self->zilla->register_prereqs( { phase => $self->phase, type => $self->relation }, $package, $value );
+  }
+  return;
+}
+
 
 
 
@@ -119,32 +126,46 @@ around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude )
 
 
 sub register_prereqs {
-  my ($self)   = @_;
-  my $zilla    = $self->zilla;
-  my $phase    = $self->phase;
-  my $relation = $self->relation;
-
-  ## no critic (Subroutines::ProtectPrivateSubs)
-  for my $section ( values %{ $self->_sequence->_sections } ) {
-
-    next if q[_] eq $section->name;
-    my $package = $section->package;
-    next if exists $self->_exclude_hash->{$package};
-    my $payload = $section->payload;
-    my $version = '0';
-    if ( exists $payload->{':version'} ) {
-      $version = $payload->{':version'};
-    }
-    $zilla->register_prereqs( { phase => $phase, type => $relation }, $package, $version );
+  my ($self) = @_;
+  my $reader = Dist::Zilla::Util::ExpandINI::Reader->new();
+  my $ini    = path( $self->zilla->root )->child('dist.ini');
+  if ( not $ini->exists ) {
+    $self->log_fatal(q[Prereqs::Plugins only works on dist.ini due to :version hidden since 5.032]);
+    return;
   }
-  return $zilla->prereqs;
-}
+  my (@sections) = @{ $reader->read_file("$ini") };
+  while (@sections) {
+    my ($section) = shift @sections;
 
-around plugin_from_config => sub {
-  my ( $orig, $plugin_class, $name, $arg, $own_section ) = @_;
-  $arg->{_sequence} = $own_section->sequence;
-  return $plugin_class->$orig( $name, $arg, $own_section );
-};
+    # Special case for Dzil
+    if ( '_' eq ( $section->{name} || q[] ) ) {
+      $self->_register_plugin_prereq( q[Dist::Zilla], $section->{lines} );
+      next;
+    }
+    my $package_expanded = Dist::Zilla::Util->expand_config_package_name( $section->{package} );
+
+    # Standard plugin.
+    if ( $section->{package} !~ /\A\@/msx ) {
+      $self->_register_plugin_prereq( $package_expanded, $section->{lines} );
+      next;
+    }
+
+    # Bundle
+    # TODO: Maybe register the bundle itself?
+    next if exists $self->_exclude_hash->{$package_expanded};
+
+    # Handle bundle
+    my $bundle = Dist::Zilla::Util::BundleInfo->new(
+      bundle_name    => $section->{package},
+      bundle_payload => $section->{lines},
+    );
+
+    for my $plugin ( $bundle->plugins ) {
+      $self->_register_plugin_prereq( $plugin->module, [ $plugin->payload_list ] );
+    }
+  }
+  return $self->zilla->prereqs;
+}
 
 __PACKAGE__->meta->make_immutable;
 no Moose;
@@ -163,7 +184,7 @@ Dist::Zilla::Plugin::Prereqs::Plugins - Add all Dist::Zilla plugins presently in
 
 =head1 VERSION
 
-version 1.002001
+version 1.003000
 
 =head1 SYNOPSIS
 
@@ -246,12 +267,6 @@ May Be specified multiple times.
 
 =head2 C<_exclude_hash>
 
-=head2 C<_sequence>
-
-This is the dark magic that makes this work.
-
-This is a required attribute that is injected during C<plugin_from_config>
-
 =head1 PRIVATE METHODS
 
 =head2 C<_build__exclude_hash>
@@ -264,7 +279,7 @@ This is a required attribute that is injected during C<plugin_from_config>
 
 =item * This module will B<NOT> I<necessarily> include B<ALL> dependencies, but is only intended to include the majority of them.
 
-Some plugins, such as my own C<Bootstrap::lib> don't add themselves to the C<dzil> C<< ->plugins() >> list, and as such, it will be invisible to this module.
+=item * This module will not report I<injected> dependencies, only dependencies that can be discovered from the parse tree directly, or from the return values of any indicated bundles.
 
 =back
 
@@ -274,7 +289,7 @@ Kent Fredric <kentnl@cpan.org>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2014 by Kent Fredric <kentfredric@gmail.com>.
+This software is copyright (c) 2015 by Kent Fredric <kentfredric@gmail.com>.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
