@@ -137,10 +137,10 @@
    "provides" : {
       "Dist::Zilla::Plugin::Prereqs::Plugins" : {
          "file" : "lib/Dist/Zilla/Plugin/Prereqs/Plugins.pm",
-         "version" : "1.003001"
+         "version" : "1.003002"
       }
    },
-   "release_status" : "testing",
+   "release_status" : "stable",
    "resources" : {
       "bugtracker" : {
          "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins/issues"
@@ -152,7 +152,7 @@
          "web" : "https://github.com/kentnl/Dist-Zilla-Plugin-Prereqs-Plugins"
       }
    },
-   "version" : "1.003001",
+   "version" : "1.003002",
    "x_BuiltWith" : {
       "external_file" : "misc/built_with.json"
    },
@@ -166,8 +166,7 @@
             "config" : {
                "Dist::Zilla::Role::Bootstrap" : {
                   "distname" : "Dist-Zilla-Plugin-Prereqs-Plugins",
-                  "try_built" : "1",
-                  "try_built_method" : "mtime"
+                  "try_built" : "1"
                }
             },
             "name" : "Bootstrap::lib",
@@ -260,13 +259,10 @@
                },
                "Dist::Zilla::Plugin::Git::GatherDir" : {
                   "include_untracked" : "0"
-               },
-               "Dist::Zilla::Role::Git::Repo" : {
-                  "repo_root" : "."
                }
             },
             "name" : "@Author::KENTNL/Git::GatherDir",
-            "version" : "2.031"
+            "version" : "2.033"
          },
          {
             "class" : "Dist::Zilla::Plugin::License",
@@ -593,7 +589,7 @@
                }
             },
             "name" : "@Author::KENTNL/Git::Check",
-            "version" : "2.031"
+            "version" : "2.033"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Commit",
@@ -616,7 +612,7 @@
                }
             },
             "name" : "@Author::KENTNL/commit_dirty_files",
-            "version" : "2.031"
+            "version" : "2.033"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
@@ -624,7 +620,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : null,
                   "signed" : 0,
-                  "tag" : "1.003001-source",
+                  "tag" : "1.003002-source",
                   "tag_format" : "%v-source",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -634,7 +630,7 @@
                }
             },
             "name" : "@Author::KENTNL/tag_master",
-            "version" : "2.031"
+            "version" : "2.033"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::NextRelease",
@@ -669,7 +665,7 @@
                }
             },
             "name" : "@Author::KENTNL/commit_release_changes",
-            "version" : "2.031"
+            "version" : "2.033"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::CommitBuild",
@@ -687,7 +683,7 @@
                }
             },
             "name" : "@Author::KENTNL/Git::CommitBuild",
-            "version" : "2.031"
+            "version" : "2.033"
          },
          {
             "class" : "Dist::Zilla::Plugin::Git::Tag",
@@ -695,7 +691,7 @@
                "Dist::Zilla::Plugin::Git::Tag" : {
                   "branch" : "releases",
                   "signed" : 0,
-                  "tag" : "1.003001",
+                  "tag" : "1.003002",
                   "tag_format" : "%v",
                   "tag_message" : "v%v",
                   "time_zone" : "local"
@@ -705,7 +701,7 @@
                }
             },
             "name" : "@Author::KENTNL/tag_release",
-            "version" : "2.031"
+            "version" : "2.033"
          },
          {
             "class" : "Dist::Zilla::Plugin::UploadToCPAN",
@@ -779,7 +775,7 @@
                }
             },
             "name" : "Prereqs::Plugins",
-            "version" : "1.003001"
+            "version" : "1.003002"
          },
          {
             "class" : "Dist::Zilla::Plugin::Prereqs",
@@ -841,7 +837,7 @@
       "zilla" : {
          "class" : "Dist::Zilla::Dist::Builder",
          "config" : {
-            "is_trial" : "1"
+            "is_trial" : "0"
          },
          "version" : "5.034"
       }
