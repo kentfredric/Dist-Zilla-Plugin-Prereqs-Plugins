@@ -56,8 +56,8 @@ x_Dist_Zilla:
       config:
         Dist::Zilla::Role::Bootstrap:
           distname: Dist-Zilla-Plugin-Prereqs-Plugins
+          fallback: '1'
           try_built: '1'
-          try_built_method: mtime
       name: Bootstrap::lib
       version: '1.001000'
     -
@@ -129,10 +129,8 @@ x_Dist_Zilla:
           root: .
         Dist::Zilla::Plugin::Git::GatherDir:
           include_untracked: '0'
-        Dist::Zilla::Role::Git::Repo:
-          repo_root: .
       name: '@Author::KENTNL/Git::GatherDir'
-      version: '2.031'
+      version: '2.033'
     -
       class: Dist::Zilla::Plugin::License
       name: '@Author::KENTNL/License'
@@ -384,7 +382,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::KENTNL/Git::Check'
-      version: '2.031'
+      version: '2.033'
     -
       class: Dist::Zilla::Plugin::Git::Commit
       config:
@@ -401,7 +399,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::KENTNL/commit_dirty_files'
-      version: '2.031'
+      version: '2.033'
     -
       class: Dist::Zilla::Plugin::Git::Tag
       config:
@@ -415,7 +413,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::KENTNL/tag_master'
-      version: '2.031'
+      version: '2.033'
     -
       class: Dist::Zilla::Plugin::Git::NextRelease
       name: '@Author::KENTNL/Git::NextRelease'
@@ -441,7 +439,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::KENTNL/commit_release_changes'
-      version: '2.031'
+      version: '2.033'
     -
       class: Dist::Zilla::Plugin::Git::CommitBuild
       config:
@@ -455,7 +453,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::KENTNL/Git::CommitBuild'
-      version: '2.031'
+      version: '2.033'
     -
       class: Dist::Zilla::Plugin::Git::Tag
       config:
@@ -469,7 +467,7 @@ x_Dist_Zilla:
         Dist::Zilla::Role::Git::Repo:
           repo_root: .
       name: '@Author::KENTNL/tag_release'
-      version: '2.031'
+      version: '2.033'
     -
       class: Dist::Zilla::Plugin::UploadToCPAN
       name: '@Author::KENTNL/UploadToCPAN'
@@ -573,7 +571,7 @@ x_Dist_Zilla:
   zilla:
     class: Dist::Zilla::Dist::Builder
     config:
-      is_trial: '1'
+      is_trial: '0'
     version: '5.034'
 x_authority: cpan:KENTNL
 x_contributors:
