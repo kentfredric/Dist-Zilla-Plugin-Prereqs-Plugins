@@ -1,6 +1,6 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
-1.003003 2015-04-10T04:15:50Z 6260095
+1.003003 2015-04-10T04:16:12Z c123527
 
 1.003002 2015-04-10T04:14:50Z 817b488
  - Bugfix: Don't randomly fail on early Moose which don't set INC in 'use Moose'
