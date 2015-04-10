@@ -3,6 +3,7 @@ use warnings;
 
 use Test::More;
 use Dist::Zilla::Util::Test::KENTNL 1.003001 qw( dztest );
+use Module::Runtime qw( module_notional_filename );
 use Test::DZil qw( simple_ini );
 
 {
@@ -18,6 +19,7 @@ use Test::DZil qw( simple_ini );
       [ 'GatherDir',        'Dist::Zilla::Plugin::GatherDir',        { ':version' => '2' } ],    #
     );
   }
+  $INC{ main::module_notional_filename(__PACKAGE__) } = __FILE__;
 }
 my $test = dztest();
 $test->add_file( 'dist.ini', simple_ini( ['@DUMMY'] ) );
