@@ -1,12 +1,14 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
-1.003003 2017-03-07T14:21:27Z 3a08c5f
+1.003003 2017-03-07T14:34:56Z de9fcf0
  - Bugfix: Avoid test failures with -Ddefault_inc_excludes_dot
+ - Remove use of ConfigDumper util
 
  [Dependencies::Stats]
  - Dependencies changed since 1.003002, see misc/*.deps* for details
  - configure: (suggests: +1)
- - develop: +5 ↑2 -1 (suggests: ↑2)
+ - develop: +6 ↑2 -2 (suggests: ↑2)
+ - runtime: -1
  - test: ↓1
 
 1.003002 2015-04-10T04:14:50Z 817b488

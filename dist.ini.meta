@@ -12,8 +12,8 @@ copyright_holder = Kent Fredric <kentfredric@gmail.com>
 ; authordep Module::Runtime
 
 ; Uncomment this to bootstrap via self
-[Bootstrap::lib]
-try_built = 1
+[lib]
+lib = lib
 
 [@Author::KENTNL]
 :version          = 2.020
