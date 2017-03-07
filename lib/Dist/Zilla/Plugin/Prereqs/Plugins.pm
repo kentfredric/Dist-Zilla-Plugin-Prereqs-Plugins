@@ -11,7 +11,6 @@ our $VERSION = '1.003003';
 # AUTHORITY
 
 use Moose qw( with has around );
-use Dist::Zilla::Util::ConfigDumper qw( config_dumper );
 use Dist::Zilla::Util;
 use MooseX::Types::Moose qw( HashRef ArrayRef Str );
 use Dist::Zilla::Util::BundleInfo;
@@ -102,8 +101,20 @@ sub _build__exclude_hash {
   my ( $self, ) = @_;
   return { map { ( $_ => 1 ) } @{ $self->exclude } };
 }
+around dump_config => sub {
+  my ( $orig, $self, @args ) = @_;
+  my $config = $self->$orig(@args);
+  my $localconf = $config->{ +__PACKAGE__ } = {};
 
-around 'dump_config' => config_dumper( __PACKAGE__, qw( phase relation exclude ) );
+  $localconf->{phase}    = $self->phase;
+  $localconf->{relation} = $self->relation;
+  $localconf->{exclude}  = $self->exclude;
+
+  $localconf->{ q[$] . __PACKAGE__ . '::VERSION' } = $VERSION
+    unless __PACKAGE__ eq ref $self;
+
+  return $config;
+};
 
 sub _register_plugin_prereq {
   my ( $self, $package, $lines ) = @_;
