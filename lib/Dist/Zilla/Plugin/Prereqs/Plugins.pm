@@ -4,7 +4,7 @@ use warnings;
 
 package Dist::Zilla::Plugin::Prereqs::Plugins;
 
-our $VERSION = '1.003003';
+our $VERSION = '1.003004';
 
 # ABSTRACT: Add all Dist::Zilla plugins presently in use as prerequisites.
 
