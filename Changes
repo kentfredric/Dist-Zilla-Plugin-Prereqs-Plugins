@@ -1,5 +1,7 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
+1.003004 2017-03-07T14:45:39Z 293d1f5
+
 1.003003 2017-03-07T14:44:51Z fcd6150
  - Bugfix: Avoid test failures with -Ddefault_inc_excludes_dot
  - Remove use of ConfigDumper util
