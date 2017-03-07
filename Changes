@@ -1,15 +1,16 @@
 Release history for Dist-Zilla-Plugin-Prereqs-Plugins
 
-1.003003 2017-03-07T14:36:06Z 442a63b
+1.003003 2017-03-07T14:44:51Z fcd6150
  - Bugfix: Avoid test failures with -Ddefault_inc_excludes_dot
  - Remove use of ConfigDumper util
+ - Wean tests of Test::KENTNL/dztest
 
  [Dependencies::Stats]
  - Dependencies changed since 1.003002, see misc/*.deps* for details
  - configure: (suggests: +1)
  - develop: +6 ↑2 -2 (suggests: ↑2)
  - runtime: -1
- - test: ↓1
+ - test: ↓1 -1
 
 1.003002 2015-04-10T04:14:50Z 817b488
  - Bugfix: Don't randomly fail on early Moose which don't set INC in 'use Moose'

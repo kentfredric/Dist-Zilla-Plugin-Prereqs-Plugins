@@ -60,7 +60,6 @@
       "Dist::Zilla::Util::BundleInfo" : "1.001005",
       "Dist::Zilla::Util::ExpandINI" : "0.003003",
       "Dist::Zilla::Util::ExpandINI::Reader" : "0.003003",
-      "Dist::Zilla::Util::Test::KENTNL" : "1.005013",
       "English" : "1.10",
       "ExtUtils::MakeMaker" : "7.24",
       "File::Spec" : "3.66",

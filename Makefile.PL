@@ -30,7 +30,6 @@ my %WriteMakefileArgs = (
   },
   "TEST_REQUIRES" => {
     "Dist::Zilla::Role::PluginBundle" => 0,
-    "Dist::Zilla::Util::Test::KENTNL" => "1.003001",
     "ExtUtils::MakeMaker" => 0,
     "File::Spec" => 0,
     "Test::DZil" => 0,
@@ -49,7 +48,6 @@ my %FallbackPrereqs = (
   "Dist::Zilla::Util" => 0,
   "Dist::Zilla::Util::BundleInfo" => 0,
   "Dist::Zilla::Util::ExpandINI::Reader" => 0,
-  "Dist::Zilla::Util::Test::KENTNL" => "1.003001",
   "ExtUtils::MakeMaker" => 0,
   "File::Spec" => 0,
   "Module::Runtime" => 0,

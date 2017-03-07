@@ -131,7 +131,6 @@
          },
          "requires" : {
             "Dist::Zilla::Role::PluginBundle" : "0",
-            "Dist::Zilla::Util::Test::KENTNL" : "1.003001",
             "ExtUtils::MakeMaker" : "0",
             "File::Spec" : "0",
             "Test::DZil" : "0",
