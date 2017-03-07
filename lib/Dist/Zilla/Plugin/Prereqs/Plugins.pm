@@ -116,6 +116,9 @@ around dump_config => sub {
   return $config;
 };
 
+__PACKAGE__->meta->make_immutable;
+no Moose;
+
 sub _register_plugin_prereq {
   my ( $self, $package, $lines ) = @_;
   return if exists $self->_exclude_hash->{$package};
@@ -178,8 +181,6 @@ sub register_prereqs {
   return $self->zilla->prereqs;
 }
 
-__PACKAGE__->meta->make_immutable;
-no Moose;
 
 1;
 
