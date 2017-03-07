@@ -1,6 +1,8 @@
 This file contains changes in REQUIRED dependencies for standard CPAN phases (configure/build/runtime/test)
 
 1.003003
+ [Changed / test requires]
+ - Test::More 0.89 → 0
 
 1.003002 2015-04-10T04:14:50Z
 
@@ -139,4 +141,3 @@ This file contains changes in REQUIRED dependencies for standard CPAN phases (co
  [Removed / test requires]
  - Capture::Tiny 0.22
  - blib
-
